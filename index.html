@@ -3,7 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bianchi Group | 41 Active Projects | $397M Profit Potential</title>
+    <title>Bianchi Group | Private Portfolio</title>
+    <style>
+        /* Password Gate Styles */
+        #password-gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+        }
+        #password-gate.hidden { display: none; }
+        .gate-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        .gate-logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .gate-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+        .gate-subtitle {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        .gate-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 0.5rem;
+            background: rgba(255,255,255,0.05);
+            color: #f8fafc;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .gate-input:focus {
+            outline: none;
+            border-color: #fbbf24;
+        }
+        .gate-input::placeholder { color: #64748b; }
+        .gate-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border: none;
+            border-radius: 0.5rem;
+            color: #000;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .gate-btn:hover { transform: scale(1.02); }
+        .gate-error {
+            color: #ef4444;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            display: none;
+        }
+        .gate-error.show { display: block; }
+        #main-content { display: none; }
+        #main-content.unlocked { display: block; }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -332,6 +410,20 @@
     </style>
 </head>
 <body>
+    <!-- Password Gate -->
+    <div id="password-gate">
+        <div class="gate-box">
+            <div class="gate-logo">🔐</div>
+            <h1 class="gate-title">Bianchi Group</h1>
+            <p class="gate-subtitle">Private Investment Portfolio<br>Authorized Access Only</p>
+            <input type="password" id="gate-password" class="gate-input" placeholder="Enter Access Code" autofocus>
+            <button onclick="checkPassword()" class="gate-btn">Access Portfolio</button>
+            <p id="gate-error" class="gate-error">Invalid access code. Please try again.</p>
+        </div>
+    </div>
+
+    <!-- Main Content (hidden until password entered) -->
+    <div id="main-content">
     <div class="container">
         <header>
             <h1>Bianchi Group Portfolio</h1>
@@ -914,6 +1006,40 @@
                     }
                 });
             });
+        });
+    </script>
+    </div><!-- End main-content -->
+
+    <!-- Password Check Script -->
+    <script>
+        const VALID_PASSWORDS = ['Bianchi2026', 'Investor123', 'Portfolio360'];
+        
+        // Check if already authenticated
+        if (sessionStorage.getItem('bianchi-auth') === 'true') {
+            document.getElementById('password-gate').classList.add('hidden');
+            document.getElementById('main-content').classList.add('unlocked');
+        }
+        
+        function checkPassword() {
+            const input = document.getElementById('gate-password').value;
+            const error = document.getElementById('gate-error');
+            
+            if (VALID_PASSWORDS.includes(input)) {
+                sessionStorage.setItem('bianchi-auth', 'true');
+                document.getElementById('password-gate').classList.add('hidden');
+                document.getElementById('main-content').classList.add('unlocked');
+            } else {
+                error.classList.add('show');
+                document.getElementById('gate-password').value = '';
+                document.getElementById('gate-password').focus();
+            }
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById('gate-password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
         });
     </script>
 </body>
