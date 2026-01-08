@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="../../styles-v2.css">
 </head>
 <body>
+    <script>
+        if (sessionStorage.getItem("bianchi-auth") !== "true") {
+            window.location.href = "/projects/";
+        }
+    </script>
     <nav class="nav" id="navbar"><div class="nav-container"><a href="#" class="nav-brand"><div class="nav-logo">OC</div><span class="nav-title">Oakland</span></a><div class="nav-actions"><span class="nav-badge" style="background: #10B981;"><i class="fas fa-check"></i> CLOSED</span></div></div></nav>
     <section class="hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">
         <span class="hero-badge" style="background: #10B981;"><i class="fas fa-trophy"></i> Track Record | 87% ROI Realized</span>

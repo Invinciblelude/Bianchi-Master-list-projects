@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="../../styles-v2.css">
 </head>
 <body>
+    <script>
+        if (sessionStorage.getItem("bianchi-auth") !== "true") {
+            window.location.href = "/projects/";
+        }
+    </script>
     <nav class="nav" id="navbar"><div class="nav-container"><a href="#" class="nav-brand"><div class="nav-logo">PC</div><span class="nav-title">Palisades Chatanooga</span></a><div class="nav-actions"><span class="nav-badge"><i class="fas fa-sun"></i> 32% ROI</span><a href="#contact" class="btn btn-primary btn-sm">Schedule Call</a></div></div></nav>
     <section class="hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">
         <span class="hero-badge"><i class="fas fa-umbrella-beach"></i> Available | Pacific Palisades</span>

@@ -33,6 +33,11 @@
     </style>
 </head>
 <body>
+    <script>
+        if (sessionStorage.getItem("bianchi-auth") !== "true") {
+            window.location.href = "/projects/";
+        }
+    </script>
     <!-- Navigation -->
     <nav class="nav" id="navbar">
         <div class="nav-container">
