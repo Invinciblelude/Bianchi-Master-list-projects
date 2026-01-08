@@ -18,16 +18,28 @@
   - Updated all 43 subproject pages to use Supabase session validation
   - Added `.gitignore` to exclude sensitive files (`.env`, `config.js`)
 
+### 3. Login Page Separation (Security Enhancement)
+- **Issue**: All project data was visible in `index.html` page source, even for unauthenticated users
+- **Solution**: Separated login page from portfolio content
+  - Created `portfolio.html` with all project data (protected by auth check)
+  - Updated `index.html` to be login-only page (no sensitive data in source)
+  - Added auth check to `portfolio.html` (redirects to `index.html` if not authenticated)
+  - Updated login redirect to go to `portfolio.html` after successful authentication
+  - Updated all 43 subproject redirects from `../` to `../index.html` (login page)
+  - **Result**: Unauthenticated users viewing `index.html` source see only login form, no project data
+
 ### Files Created
 - `styles-v2.css` - External stylesheet
 - `auth.js` - Authentication utility functions
 - `config.js` - Supabase configuration (gitignored)
 - `config.js.example` - Configuration template
+- `portfolio.html` - Protected portfolio page with all project data
 - `.gitignore` - Excludes sensitive files
 
 ### Files Modified
-- `index.html` - Replaced inline CSS and password gate with Supabase auth
-- All 43 subproject `index.html` files - Fixed CSS paths and replaced sessionStorage with Supabase auth
+- `index.html` - Replaced inline CSS and password gate with Supabase auth, then separated to login-only page
+- `portfolio.html` - Contains all project data, protected by authentication check
+- All 43 subproject `index.html` files - Fixed CSS paths, replaced sessionStorage with Supabase auth, updated redirects to `../index.html`
 
 ## Current Security Status
 
@@ -37,16 +49,14 @@
 - Signups are disabled in Supabase (only manual account creation)
 - Session persists across page navigation
 
-### ⚠️ Security Limitation
-**All project data is visible in HTML page source** - Even when not logged in, someone viewing page source can see:
-- All project names
-- All financial data (profit, capital ask, ROI)
-- All locations
-- Summary statistics
+### ✅ Security Improvement (Latest Update)
+**Login page separation** - `index.html` now contains only the login form:
+- No project data visible in `index.html` page source
+- All sensitive data moved to `portfolio.html` (protected by auth)
+- Unauthenticated users cannot see project data in page source
+- Authenticated users are redirected to `portfolio.html` after login
 
-This is because the HTML contains all data, just hidden with CSS (`display: none`).
-
-## Next Steps: Data Protection (Option 2)
+## Previous Consideration: Data Protection (Option 2)
 
 ### Goal
 Prevent sensitive financial data from being visible in page source by loading content dynamically after authentication.
