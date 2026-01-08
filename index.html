@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bianchi Group | 41 Active Projects | $397M Profit Potential</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            color: #f8fafc;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 2rem;
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p { color: #94a3b8; font-size: 1.25rem; }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #fbbf24; }
+        .stat-label { font-size: 0.875rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* Controls Bar */
+        .controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            flex-wrap: wrap;
+        }
+        .main-site-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #000;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: transform 0.2s;
+        }
+        .main-site-link:hover { transform: scale(1.05); }
+
+        .view-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .view-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #94a3b8;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+        .view-btn:hover { border-color: #fbbf24; color: #fbbf24; }
+        .view-btn.active { background: #fbbf24; color: #000; border-color: #fbbf24; }
+
+        /* Category Navigation */
+        .category-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 0.75rem;
+        }
+        .category-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .category-btn:hover { background: rgba(255,255,255,0.1); color: #f8fafc; }
+        .category-btn.active { background: #fbbf24; color: #000; }
+        .category-btn .count {
+            background: rgba(0,0,0,0.2);
+            padding: 0.125rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+        }
+        .category-btn.active .count { background: rgba(0,0,0,0.3); }
+        
+        /* GRID VIEW STYLES */
+        .section { margin-bottom: 3rem; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .section-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .badge-escrow { background: #ef4444; }
+        .badge-construction { background: #f97316; }
+        .badge-entitled { background: #eab308; color: #000; }
+        .badge-owned { background: #22c55e; }
+        .badge-available { background: #3b82f6; }
+        .badge-closed { background: #10b981; }
+        
+        .section-title { font-size: 1.5rem; font-weight: 600; }
+        .section-count { color: #64748b; font-size: 0.875rem; }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .project-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fbbf24;
+            transform: translateY(-4px);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .card-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #000;
+            font-size: 1rem;
+        }
+        .card-roi {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .card-roi.closed {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .card-location {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-stats {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .card-stat-value { font-weight: 600; color: #f8fafc; }
+        .card-stat-label { font-size: 0.75rem; color: #64748b; }
+        
+        .card-arrow {
+            margin-top: 1rem;
+            color: #fbbf24;
+            font-size: 0.875rem;
+        }
+
+        /* LIST VIEW STYLES */
+        .list-view { display: none; }
+        .list-view.active { display: block; }
+        .grid-view.hidden { display: none; }
+
+        .projects-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        .projects-table th {
+            text-align: left;
+            padding: 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.03);
+        }
+        .projects-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: middle;
+        }
+        .projects-table tbody tr {
+            transition: all 0.2s;
+        }
+        .projects-table tbody tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        .projects-table a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .table-project-name {
+            font-weight: 600;
+            color: #f8fafc;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .table-logo {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #000;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+        .table-logo.closed { background: #10b981; }
+        .table-location { color: #94a3b8; font-size: 0.875rem; }
+        .table-roi {
+            font-weight: 600;
+            color: #fbbf24;
+        }
+        .table-roi.closed { color: #10b981; }
+        .table-profit { font-weight: 600; color: #f8fafc; }
+        .table-capital { color: #94a3b8; }
+        .table-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-escrow { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .status-construction { background: rgba(249,115,22,0.2); color: #f97316; }
+        .status-entitled { background: rgba(234,179,8,0.2); color: #eab308; }
+        .status-owned { background: rgba(34,197,94,0.2); color: #22c55e; }
+        .status-available { background: rgba(59,130,246,0.2); color: #3b82f6; }
+        .status-closed { background: rgba(16,185,129,0.2); color: #10b981; }
+        .table-arrow { color: #fbbf24; }
+        
+        .list-section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .stats-bar { gap: 1.5rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .controls-bar { flex-direction: column; align-items: stretch; }
+            .view-controls { justify-content: center; }
+            .category-nav { justify-content: center; }
+            .projects-table { font-size: 0.875rem; }
+            .projects-table th, .projects-table td { padding: 0.75rem 0.5rem; }
+            .table-logo { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bianchi Group Portfolio</h1>
+            <p style="font-size: 1.1rem;">47 Projects | $360.5M Profit Potential | 55% Average ROI</p>
+            
+            <div class="stats-bar">
+                <div class="stat"><div class="stat-value">47</div><div class="stat-label">Total Projects</div></div>
+                <div class="stat"><div class="stat-value">$360.5M</div><div class="stat-label">Profit Potential</div></div>
+                <div class="stat"><div class="stat-value">55%</div><div class="stat-label">Avg ROI</div></div>
+                <div class="stat"><div class="stat-value">$118.6M</div><div class="stat-label">Capital Required</div></div>
+                <div class="stat"><div class="stat-value">$10.8M</div><div class="stat-label">Track Record</div></div>
+            </div>
+            
+            
+            <!-- Strategy Highlights -->
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+                <div style="background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); padding: 0.75rem 1.25rem; border-radius: 0.75rem; text-align: center;">
+                    <div style="color: #ef4444; font-weight: 700; font-size: 1.25rem;">$45.5M</div>
+                    <div style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase;">Self-Storage Profit</div>
+                    <div style="color: #64748b; font-size: 0.7rem;">96-101% ROI | 13% of Portfolio</div>
+                </div>
+                <div style="background: rgba(234,179,8,0.15); border: 1px solid rgba(234,179,8,0.3); padding: 0.75rem 1.25rem; border-radius: 0.75rem; text-align: center;">
+                    <div style="color: #eab308; font-weight: 700; font-size: 1.25rem;">$201M</div>
+                    <div style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase;">3 Mega Projects</div>
+                    <div style="color: #64748b; font-size: 0.7rem;">56% of Total Profit Potential</div>
+                </div>
+                <div style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); padding: 0.75rem 1.25rem; border-radius: 0.75rem; text-align: center;">
+                    <div style="color: #10b981; font-weight: 700; font-size: 1.25rem;">87%</div>
+                    <div style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase;">Bay Area ROI</div>
+                    <div style="color: #64748b; font-size: 0.7rem;">Closed Deals Average</div>
+                </div>
+                <div style="background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); padding: 0.75rem 1.25rem; border-radius: 0.75rem; text-align: center;">
+                    <div style="color: #3b82f6; font-weight: 700; font-size: 1.25rem;">$65.1M</div>
+                    <div style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase;">In Escrow</div>
+                    <div style="color: #64748b; font-size: 0.7rem;">8 Projects Closing</div>
+                </div>
+            </div>
+            
+            <!-- Geographic Distribution -->
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 0.75rem;">
+                <div style="color: #64748b; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; text-align: center;">Geographic Distribution</div>
+                <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+                    <span style="background: rgba(251,191,36,0.2); color: #fbbf24; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.8rem;">Sacramento 36%</span>
+                    <span style="background: rgba(59,130,246,0.2); color: #3b82f6; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.8rem;">Bay Area 21%</span>
+                    <span style="background: rgba(236,72,153,0.2); color: #ec4899; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.8rem;">Pacific Palisades 15%</span>
+                    <span style="background: rgba(34,197,94,0.2); color: #22c55e; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.8rem;">Placer/El Dorado 13%</span>
+                    <span style="background: rgba(168,85,247,0.2); color: #a855f7; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.8rem;">Wine Country 8%</span>
+                    <span style="background: rgba(14,165,233,0.2); color: #0ea5e9; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.8rem;">Coastal/Other 7%</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Controls Bar -->
+        <div class="controls-bar">
+            <a href="../" class="main-site-link"><i class="fas fa-star"></i> Vista Lake Estates - Flagship</a>
+            <div class="view-controls">
+                <button class="view-btn active" data-view="grid"><i class="fas fa-th-large"></i> Cards</button>
+                <button class="view-btn" data-view="list"><i class="fas fa-list"></i> List</button>
+            </div>
+        </div>
+
+        <!-- Category Navigation -->
+        <nav class="category-nav">
+            <button class="category-btn active" data-category="all"><i class="fas fa-layer-group"></i> All <span class="count">47</span></button>
+            <button class="category-btn" data-category="escrow"><i class="fas fa-fire"></i> In Escrow <span class="count">8</span></button>
+            <button class="category-btn" data-category="construction"><i class="fas fa-hard-hat"></i> Construction <span class="count">5</span></button>
+            <button class="category-btn" data-category="entitled"><i class="fas fa-file-contract"></i> Entitled <span class="count">3</span></button>
+            <button class="category-btn" data-category="owned"><i class="fas fa-key"></i> Owned <span class="count">3</span></button>
+            <button class="category-btn" data-category="available"><i class="fas fa-search"></i> Available <span class="count">20</span></button>
+            <button class="category-btn" data-category="closed"><i class="fas fa-trophy"></i> Closed <span class="count">4</span></button>
+        </nav>
+
+        <!-- GRID VIEW -->
+        <div class="grid-view">
+            <!-- IN ESCROW -->
+            <div class="section" data-section="escrow">
+                <div class="section-header">
+                    <span class="section-badge badge-escrow"><i class="fas fa-fire"></i> In Escrow</span>
+                    <h2 class="section-title">Closing Soon</h2>
+                    <span class="section-count">8 projects • $65.1M profit</span>
+                </div>
+                <div class="projects-grid">
+                    <a href="tracy-self-storage/" class="project-card">
+                        <div class="card-header"><div class="card-logo">TS</div><div class="card-roi">101% ROI</div></div>
+                        <h3 class="card-title">Tracy Self Storage</h3>
+                        <p class="card-location">Tracy, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$22.6M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$7M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="calvine-rd-storage/" class="project-card">
+                        <div class="card-header"><div class="card-logo">CR</div><div class="card-roi">96% ROI</div></div>
+                        <h3 class="card-title">Calvine Rd Storage</h3>
+                        <p class="card-location">Sacramento, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$22.9M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$7M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="edh-lomand/" class="project-card">
+                        <div class="card-header"><div class="card-logo">EL</div><div class="card-roi">63% ROI</div></div>
+                        <h3 class="card-title">EDH Lomand</h3>
+                        <p class="card-location">El Dorado Hills, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$500K</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="south-point-meadows/" class="project-card">
+                        <div class="card-header"><div class="card-logo">SP</div><div class="card-roi">59% ROI</div></div>
+                        <h3 class="card-title">South Point Meadows</h3>
+                        <p class="card-location">El Dorado Hills, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$6.6M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$2M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="napa-540-westgate/" class="project-card">
+                        <div class="card-header"><div class="card-logo">NW</div><div class="card-roi">49% ROI</div></div>
+                        <h3 class="card-title">Napa 540 Westgate</h3>
+                        <p class="card-location">Napa, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1.4M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="kenwood-lawndale/" class="project-card">
+                        <div class="card-header"><div class="card-logo">KL</div><div class="card-roi">38% ROI</div></div>
+                        <h3 class="card-title">Kenwood Lawndale</h3>
+                        <p class="card-location">Kenwood, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1.4M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1.5M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="river-district-43/" class="project-card">
+                        <div class="card-header"><div class="card-logo">RD</div><div class="card-roi">35% ROI</div></div>
+                        <h3 class="card-title">River District 43</h3>
+                        <p class="card-location">Sacramento, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$6.9M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$5M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="sf-states-st/" class="project-card">
+                        <div class="card-header"><div class="card-logo">SF</div><div class="card-roi">32% ROI</div></div>
+                        <h3 class="card-title">SF States Street</h3>
+                        <p class="card-location">San Francisco, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1.8M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$300K</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- UNDER CONSTRUCTION -->
+            <div class="section" data-section="construction">
+                <div class="section-header">
+                    <span class="section-badge badge-construction"><i class="fas fa-hard-hat"></i> Under Construction</span>
+                    <h2 class="section-title">Active Projects</h2>
+                    <span class="section-count">5 projects • $19.1M profit</span>
+                </div>
+                <div class="projects-grid">
+                    <a href="cambridge/" class="project-card">
+                        <div class="card-header"><div class="card-logo">CB</div><div class="card-roi">57% ROI</div></div>
+                        <h3 class="card-title">Cambridge</h3>
+                        <p class="card-location">Cameron Park, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$3.2M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">12 Units</div><div class="card-stat-label">Townhomes</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="brentwood/" class="project-card">
+                        <div class="card-header"><div class="card-logo">BW</div><div class="card-roi">52% ROI</div></div>
+                        <h3 class="card-title">Brentwood</h3>
+                        <p class="card-location">Brentwood, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$5.1M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$650K</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="baldwin-lake/" class="project-card">
+                        <div class="card-header"><div class="card-logo">BL</div><div class="card-roi">51% ROI</div></div>
+                        <h3 class="card-title">Baldwin Lake</h3>
+                        <p class="card-location">Folsom, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$2.2M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="brady-lane/" class="project-card">
+                        <div class="card-header"><div class="card-logo">BL</div><div class="card-roi">42% ROI</div></div>
+                        <h3 class="card-title">Brady Lane</h3>
+                        <p class="card-location">Roseville, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$3.4M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="brookwood/" class="project-card">
+                        <div class="card-header"><div class="card-logo">BK</div><div class="card-roi">34% ROI</div></div>
+                        <h3 class="card-title">Brookwood</h3>
+                        <p class="card-location">Roseville, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$5.4M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$500K</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ENTITLED -->
+            <div class="section" data-section="entitled">
+                <div class="section-header">
+                    <span class="section-badge badge-entitled"><i class="fas fa-file-contract"></i> Entitled</span>
+                    <h2 class="section-title">Ready to Execute</h2>
+                    <span class="section-count">3 projects • $155.9M profit</span>
+                </div>
+                <div class="projects-grid">
+                    <a href="boulder-road/" class="project-card">
+                        <div class="card-header"><div class="card-logo">BR</div><div class="card-roi">85% ROI</div></div>
+                        <h3 class="card-title">Boulder Road</h3>
+                        <p class="card-location">Granite Bay, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$5.9M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$3.5M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="tahoe-zalanta/" class="project-card">
+                        <div class="card-header"><div class="card-logo">TZ</div><div class="card-roi">100% ROI</div></div>
+                        <h3 class="card-title">Tahoe Zalanta</h3>
+                        <p class="card-location">South Lake Tahoe, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$70M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$17.5M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="west-oaks/" class="project-card">
+                        <div class="card-header"><div class="card-logo">WO</div><div class="card-roi">67% ROI</div></div>
+                        <h3 class="card-title">West Oaks</h3>
+                        <p class="card-location">Rocklin, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$80M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$22M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- OWNED -->
+            <div class="section" data-section="owned">
+                <div class="section-header">
+                    <span class="section-badge badge-owned"><i class="fas fa-key"></i> Owned</span>
+                    <h2 class="section-title">Land Banked</h2>
+                    <span class="section-count">3 projects • $23.9M profit</span>
+                </div>
+                <div class="projects-grid">
+                    <a href="thermalands/" class="project-card">
+                        <div class="card-header"><div class="card-logo">TL</div><div class="card-roi">82% ROI</div></div>
+                        <h3 class="card-title">Thermalands</h3>
+                        <p class="card-location">Lincoln, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$3.1M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="gv-hotel/" class="project-card">
+                        <div class="card-header"><div class="card-logo">GV</div><div class="card-roi">75% ROI</div></div>
+                        <h3 class="card-title">Grass Valley Hotel</h3>
+                        <p class="card-location">Grass Valley, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$15M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$6M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="bankhead/" class="project-card">
+                        <div class="card-header"><div class="card-logo">BH</div><div class="card-roi">47% ROI</div></div>
+                        <h3 class="card-title">Bankhead</h3>
+                        <p class="card-location">Loomis, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$5.8M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$2.5M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- AVAILABLE -->
+            <div class="section" data-section="available">
+                <div class="section-header">
+                    <span class="section-badge badge-available"><i class="fas fa-search"></i> Available</span>
+                    <h2 class="section-title">Active Pipeline</h2>
+                    <span class="section-count">19 projects • $96.5M+ profit</span>
+                </div>
+                <div class="projects-grid">
+                    <a href="sf-edgehill/" class="project-card">
+                        <div class="card-header"><div class="card-logo">SE</div><div class="card-roi">77% ROI</div></div>
+                        <h3 class="card-title">SF Edgehill</h3>
+                        <p class="card-location">San Francisco, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$2.8M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1.3M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="danville-shirlee/" class="project-card">
+                        <div class="card-header"><div class="card-logo">DS</div><div class="card-roi">59% ROI</div></div>
+                        <h3 class="card-title">Danville Shirlee</h3>
+                        <p class="card-location">Danville, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1.7M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="schaffers-mill/" class="project-card">
+                        <div class="card-header"><div class="card-logo">SM</div><div class="card-roi">53% ROI</div></div>
+                        <h3 class="card-title">Schaffer's Mill</h3>
+                        <p class="card-location">Truckee, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1.8M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$850K</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="twin-rocks-winery/" class="project-card">
+                        <div class="card-header"><div class="card-logo">TR</div><div class="card-roi">52% ROI</div></div>
+                        <h3 class="card-title">Twin Rocks Winery</h3>
+                        <p class="card-location">Granite Bay, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$27M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$6M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="palisades-chautauqua/" class="project-card">
+                        <div class="card-header"><div class="card-logo">PC</div><div class="card-roi">52% ROI</div></div>
+                        <h3 class="card-title">Palisades Chautauqua</h3>
+                        <p class="card-location">Pacific Palisades, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$3.8M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="palisades-mckendree/" class="project-card">
+                        <div class="card-header"><div class="card-logo">PM</div><div class="card-roi">49% ROI</div></div>
+                        <h3 class="card-title">Palisades McKendree</h3>
+                        <p class="card-location">Pacific Palisades, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$3.6M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="sudor-lane/" class="project-card">
+                        <div class="card-header"><div class="card-logo">SL</div><div class="card-roi">48% ROI</div></div>
+                        <h3 class="card-title">Sudor Lane</h3>
+                        <p class="card-location">Loomis, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1.5M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$779K</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="napa-stanly-ranch/" class="project-card">
+                        <div class="card-header"><div class="card-logo">NS</div><div class="card-roi">47% ROI</div></div>
+                        <h3 class="card-title">Napa Stanly Ranch</h3>
+                        <p class="card-location">Napa, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$2.3M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1.3M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="castro-260/" class="project-card">
+                        <div class="card-header"><div class="card-logo">26</div><div class="card-roi">46% ROI</div></div>
+                        <h3 class="card-title">260 Castro</h3>
+                        <p class="card-location">San Francisco, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$3.5M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$2.5M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="alamo-oakshire/" class="project-card">
+                        <div class="card-header"><div class="card-logo">AO</div><div class="card-roi">43% ROI</div></div>
+                        <h3 class="card-title">Alamo Oakshire</h3>
+                        <p class="card-location">Alamo, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1.9M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1.4M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="palisades-aderno/" class="project-card">
+                        <div class="card-header"><div class="card-logo">PA</div><div class="card-roi">43% ROI</div></div>
+                        <h3 class="card-title">Palisades Aderno</h3>
+                        <p class="card-location">Pacific Palisades, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$3.1M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="granite-bay-239/" class="project-card">
+                        <div class="card-header"><div class="card-logo">GB</div><div class="card-roi">36% ROI</div></div>
+                        <h3 class="card-title">Granite Bay 239</h3>
+                        <p class="card-location">Granite Bay, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$51M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$16M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="river-district-8/" class="project-card">
+                        <div class="card-header"><div class="card-logo">RD</div><div class="card-roi">45% ROI</div></div>
+                        <h3 class="card-title">River District</h3>
+                        <p class="card-location">Sacramento, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$8M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$5M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="palisades-enchanted/" class="project-card">
+                        <div class="card-header"><div class="card-logo">PE</div><div class="card-roi">36% ROI</div></div>
+                        <h3 class="card-title">Palisades Enchanted</h3>
+                        <p class="card-location">Pacific Palisades, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1.8M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="san-clemente/" class="project-card">
+                        <div class="card-header"><div class="card-logo">SC</div><div class="card-roi">33% ROI</div></div>
+                        <h3 class="card-title">San Clemente</h3>
+                        <p class="card-location">Capistrano Beach, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1.7M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1.5M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="moss-beach/" class="project-card">
+                        <div class="card-header"><div class="card-logo">MB</div><div class="card-roi">33% ROI</div></div>
+                        <h3 class="card-title">Moss Beach</h3>
+                        <p class="card-location">Moss Beach, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$2M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1.3M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="palisades-chatanooga/" class="project-card">
+                        <div class="card-header"><div class="card-logo">PC</div><div class="card-roi">32% ROI</div></div>
+                        <h3 class="card-title">Palisades Chatanooga</h3>
+                        <p class="card-location">Pacific Palisades, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$900K</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="palisades-marinette/" class="project-card">
+                        <div class="card-header"><div class="card-logo">PM</div><div class="card-roi">29% ROI</div></div>
+                        <h3 class="card-title">Palisades Marinette</h3>
+                        <p class="card-location">Pacific Palisades, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$1.6M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                    <a href="delmar-ave/" class="project-card">
+                        <div class="card-header"><div class="card-logo">DM</div><div class="card-roi">28% ROI</div></div>
+                        <h3 class="card-title">Delmar Ave</h3>
+                        <p class="card-location">Loomis, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value">$4.3M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1.5M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                        <div class="card-arrow">View Details →</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TRACK RECORD -->
+            <div class="section" data-section="closed">
+                <div class="section-header">
+                    <span class="section-badge badge-closed"><i class="fas fa-trophy"></i> Track Record</span>
+                    <h2 class="section-title">Closed Deals</h2>
+                    <span class="section-count">$10.8M realized profits</span>
+                </div>
+                <div class="projects-grid">
+                    <a href="oakland-closed/" class="project-card">
+                        <div class="card-header"><div class="card-logo" style="background: #10b981;">OC</div><div class="card-roi closed">87% ROI ✓</div></div>
+                        <h3 class="card-title">Oakland Custom Lots</h3>
+                        <p class="card-location">Oakland, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value" style="color: #10b981;">$4.1M</div><div class="card-stat-label">Profit Delivered</div></div></div>
+                        <div class="card-arrow" style="color: #10b981;">View Case Study →</div>
+                    </a>
+                    <a href="orinda-closed/" class="project-card">
+                        <div class="card-header"><div class="card-logo" style="background: #10b981;">OR</div><div class="card-roi closed">87% ROI ✓</div></div>
+                        <h3 class="card-title">Orinda Custom</h3>
+                        <p class="card-location">Orinda, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value" style="color: #10b981;">$2.6M</div><div class="card-stat-label">Profit Delivered</div></div></div>
+                        <div class="card-arrow" style="color: #10b981;">View Case Study →</div>
+                    </a>
+                    <a href="napa-542-westgate/" class="project-card">
+                        <div class="card-header"><div class="card-logo" style="background: #10b981;">NW</div><div class="card-roi closed">57% ROI ✓</div></div>
+                        <h3 class="card-title">Napa 542 Westgate</h3>
+                        <p class="card-location">Napa, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value" style="color: #10b981;">$1.6M</div><div class="card-stat-label">Profit Delivered</div></div></div>
+                        <div class="card-arrow" style="color: #10b981;">View Case Study →</div>
+                    </a>
+                    <a href="sf-dual-customs/" class="project-card">
+                        <div class="card-header"><div class="card-logo" style="background: #10b981;">SF</div><div class="card-roi closed">55% ROI ✓</div></div>
+                        <h3 class="card-title">SF Dual Customs</h3>
+                        <p class="card-location">San Francisco, CA</p>
+                        <div class="card-stats"><div><div class="card-stat-value" style="color: #10b981;">$2.5M</div><div class="card-stat-label">Profit Delivered</div></div></div>
+                        <div class="card-arrow" style="color: #10b981;">View Case Study →</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIST VIEW -->
+        <div class="list-view">
+            <table class="projects-table">
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>ROI</th>
+                        <th>Profit</th>
+                        <th>Capital Ask</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- IN ESCROW -->
+                    <tr class="list-section-row" data-category="escrow">
+                        <td colspan="7"><div class="list-section-header"><span class="section-badge badge-escrow">In Escrow</span><span style="color:#64748b;">8 projects • $65.1M profit</span></div></td>
+                    </tr>
+                    <tr data-category="escrow"><td><a href="tracy-self-storage/"><div class="table-project-name"><div class="table-logo">TS</div>Tracy Self Storage</div></a></td><td class="table-location">Tracy, CA</td><td><span class="table-status status-escrow">In Escrow</span></td><td class="table-roi">101%</td><td class="table-profit">$22.6M</td><td class="table-capital">$7M</td><td class="table-arrow"><a href="tracy-self-storage/">→</a></td></tr>
+                    <tr data-category="escrow"><td><a href="calvine-rd-storage/"><div class="table-project-name"><div class="table-logo">CR</div>Calvine Rd Storage</div></a></td><td class="table-location">Sacramento, CA</td><td><span class="table-status status-escrow">In Escrow</span></td><td class="table-roi">96%</td><td class="table-profit">$22.9M</td><td class="table-capital">$7M</td><td class="table-arrow"><a href="calvine-rd-storage/">→</a></td></tr>
+                    <tr data-category="escrow"><td><a href="edh-lomand/"><div class="table-project-name"><div class="table-logo">EL</div>EDH Lomand</div></a></td><td class="table-location">El Dorado Hills, CA</td><td><span class="table-status status-escrow">In Escrow</span></td><td class="table-roi">63%</td><td class="table-profit">$1M</td><td class="table-capital">$500K</td><td class="table-arrow"><a href="edh-lomand/">→</a></td></tr>
+                    <tr data-category="escrow"><td><a href="south-point-meadows/"><div class="table-project-name"><div class="table-logo">SP</div>South Point Meadows</div></a></td><td class="table-location">El Dorado Hills, CA</td><td><span class="table-status status-escrow">In Escrow</span></td><td class="table-roi">59%</td><td class="table-profit">$6.6M</td><td class="table-capital">$1.5M</td><td class="table-arrow"><a href="south-point-meadows/">→</a></td></tr>
+                    <tr data-category="escrow"><td><a href="napa-540-westgate/"><div class="table-project-name"><div class="table-logo">NW</div>Napa 540 Westgate</div></a></td><td class="table-location">Napa, CA</td><td><span class="table-status status-escrow">In Escrow</span></td><td class="table-roi">49%</td><td class="table-profit">$1.4M</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="napa-540-westgate/">→</a></td></tr>
+                    <tr data-category="escrow"><td><a href="kenwood-lawndale/"><div class="table-project-name"><div class="table-logo">KL</div>Kenwood Lawndale</div></a></td><td class="table-location">Kenwood, CA</td><td><span class="table-status status-escrow">In Escrow</span></td><td class="table-roi">38%</td><td class="table-profit">$1.4M</td><td class="table-capital">$1.5M</td><td class="table-arrow"><a href="kenwood-lawndale/">→</a></td></tr>
+                    <tr data-category="escrow"><td><a href="river-district-43/"><div class="table-project-name"><div class="table-logo">RD</div>River District 43</div></a></td><td class="table-location">Sacramento, CA</td><td><span class="table-status status-escrow">In Escrow</span></td><td class="table-roi">35%</td><td class="table-profit">$6.9M</td><td class="table-capital">$5M</td><td class="table-arrow"><a href="river-district-43/">→</a></td></tr>
+                    <tr data-category="escrow"><td><a href="sf-states-st/"><div class="table-project-name"><div class="table-logo">SF</div>SF States Street</div></a></td><td class="table-location">San Francisco, CA</td><td><span class="table-status status-escrow">In Escrow</span></td><td class="table-roi">32%</td><td class="table-profit">$1.8M</td><td class="table-capital">$300K</td><td class="table-arrow"><a href="sf-states-st/">→</a></td></tr>
+                    
+                    <!-- CONSTRUCTION -->
+                    <tr class="list-section-row" data-category="construction">
+                        <td colspan="7"><div class="list-section-header"><span class="section-badge badge-construction">Under Construction</span><span style="color:#64748b;">5 projects • $19.1M profit</span></div></td>
+                    </tr>
+                    <tr data-category="construction"><td><a href="cambridge/"><div class="table-project-name"><div class="table-logo">CB</div>Cambridge</div></a></td><td class="table-location">Cameron Park, CA</td><td><span class="table-status status-construction">Construction</span></td><td class="table-roi">57%</td><td class="table-profit">$3.2M</td><td class="table-capital">12 Units</td><td class="table-arrow"><a href="cambridge/">→</a></td></tr>
+                    <tr data-category="construction"><td><a href="brentwood/"><div class="table-project-name"><div class="table-logo">BW</div>Brentwood</div></a></td><td class="table-location">Brentwood, CA</td><td><span class="table-status status-construction">Construction</span></td><td class="table-roi">52%</td><td class="table-profit">$5.1M</td><td class="table-capital">$650K</td><td class="table-arrow"><a href="brentwood/">→</a></td></tr>
+                    <tr data-category="construction"><td><a href="baldwin-lake/"><div class="table-project-name"><div class="table-logo">BL</div>Baldwin Lake</div></a></td><td class="table-location">Folsom, CA</td><td><span class="table-status status-construction">Construction</span></td><td class="table-roi">51%</td><td class="table-profit">$2.2M</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="baldwin-lake/">→</a></td></tr>
+                    <tr data-category="construction"><td><a href="brady-lane/"><div class="table-project-name"><div class="table-logo">BL</div>Brady Lane</div></a></td><td class="table-location">Roseville, CA</td><td><span class="table-status status-construction">Construction</span></td><td class="table-roi">42%</td><td class="table-profit">$3.4M</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="brady-lane/">→</a></td></tr>
+                    <tr data-category="construction"><td><a href="brookwood/"><div class="table-project-name"><div class="table-logo">BK</div>Brookwood</div></a></td><td class="table-location">Roseville, CA</td><td><span class="table-status status-construction">Construction</span></td><td class="table-roi">34%</td><td class="table-profit">$5.4M</td><td class="table-capital">$500K</td><td class="table-arrow"><a href="brookwood/">→</a></td></tr>
+                    
+                    <!-- ENTITLED -->
+                    <tr class="list-section-row" data-category="entitled">
+                        <td colspan="7"><div class="list-section-header"><span class="section-badge badge-entitled">Entitled</span><span style="color:#64748b;">3 projects • $155.9M profit</span></div></td>
+                    </tr>
+                    <tr data-category="entitled"><td><a href="tahoe-zalanta/"><div class="table-project-name"><div class="table-logo">TZ</div>Tahoe Zalanta</div></a></td><td class="table-location">S. Lake Tahoe, CA</td><td><span class="table-status status-entitled">Land Owned</span></td><td class="table-roi">100%</td><td class="table-profit">$70M</td><td class="table-capital">$17.5M</td><td class="table-arrow"><a href="tahoe-zalanta/">→</a></td></tr>
+                    <tr data-category="entitled"><td><a href="boulder-road/"><div class="table-project-name"><div class="table-logo">BR</div>Boulder Road</div></a></td><td class="table-location">Granite Bay, CA</td><td><span class="table-status status-entitled">Tentative Map</span></td><td class="table-roi">85%</td><td class="table-profit">$5.9M</td><td class="table-capital">$3.5M</td><td class="table-arrow"><a href="boulder-road/">→</a></td></tr>
+                    <tr data-category="entitled"><td><a href="west-oaks/"><div class="table-project-name"><div class="table-logo">WO</div>West Oaks</div></a></td><td class="table-location">Rocklin, CA</td><td><span class="table-status status-entitled">Final Map</span></td><td class="table-roi">67%</td><td class="table-profit">$80M</td><td class="table-capital">$22M</td><td class="table-arrow"><a href="west-oaks/">→</a></td></tr>
+                    
+                    <!-- OWNED -->
+                    <tr class="list-section-row" data-category="owned">
+                        <td colspan="7"><div class="list-section-header"><span class="section-badge badge-owned">Land Banked</span><span style="color:#64748b;">3 projects • $23.9M profit</span></div></td>
+                    </tr>
+                    <tr data-category="owned"><td><a href="thermalands/"><div class="table-project-name"><div class="table-logo">TL</div>Thermalands</div></a></td><td class="table-location">Lincoln, CA</td><td><span class="table-status status-owned">Owned</span></td><td class="table-roi">82%</td><td class="table-profit">$3.1M</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="thermalands/">→</a></td></tr>
+                    <tr data-category="owned"><td><a href="gv-hotel/"><div class="table-project-name"><div class="table-logo">GV</div>Grass Valley Hotel</div></a></td><td class="table-location">Grass Valley, CA</td><td><span class="table-status status-owned">Owned</span></td><td class="table-roi">75%</td><td class="table-profit">$15M</td><td class="table-capital">$6M</td><td class="table-arrow"><a href="gv-hotel/">→</a></td></tr>
+                    <tr data-category="owned"><td><a href="bankhead/"><div class="table-project-name"><div class="table-logo">BH</div>Bankhead</div></a></td><td class="table-location">Loomis, CA</td><td><span class="table-status status-owned">Owned</span></td><td class="table-roi">47%</td><td class="table-profit">$5.8M</td><td class="table-capital">$2.5M</td><td class="table-arrow"><a href="bankhead/">→</a></td></tr>
+                    
+                    <!-- AVAILABLE -->
+                    <tr class="list-section-row" data-category="available">
+                        <td colspan="7"><div class="list-section-header"><span class="section-badge badge-available">Active Pipeline</span><span style="color:#64748b;">20 projects • $96.5M+ profit</span></div></td>
+                    </tr>
+                    <tr data-category="available"><td><a href="sf-edgehill/"><div class="table-project-name"><div class="table-logo">SE</div>SF Edgehill</div></a></td><td class="table-location">San Francisco, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">77%</td><td class="table-profit">$2.8M</td><td class="table-capital">$1.3M</td><td class="table-arrow"><a href="sf-edgehill/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="danville-shirlee/"><div class="table-project-name"><div class="table-logo">DS</div>Danville Shirlee</div></a></td><td class="table-location">Danville, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">59%</td><td class="table-profit">$1.7M</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="danville-shirlee/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="schaffers-mill/"><div class="table-project-name"><div class="table-logo">SM</div>Schaffer's Mill</div></a></td><td class="table-location">Truckee, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">53%</td><td class="table-profit">$1.8M</td><td class="table-capital">$850K</td><td class="table-arrow"><a href="schaffers-mill/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="twin-rocks-winery/"><div class="table-project-name"><div class="table-logo">TR</div>Twin Rocks Winery</div></a></td><td class="table-location">Granite Bay, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">52%</td><td class="table-profit">$27M</td><td class="table-capital">$6M</td><td class="table-arrow"><a href="twin-rocks-winery/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="palisades-chautauqua/"><div class="table-project-name"><div class="table-logo">PC</div>Palisades Chautauqua</div></a></td><td class="table-location">Pacific Palisades, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">52%</td><td class="table-profit">$3.8M</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="palisades-chautauqua/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="palisades-mckendree/"><div class="table-project-name"><div class="table-logo">PM</div>Palisades McKendree</div></a></td><td class="table-location">Pacific Palisades, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">49%</td><td class="table-profit">$3.6M</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="palisades-mckendree/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="sudor-lane/"><div class="table-project-name"><div class="table-logo">SL</div>Sudor Lane</div></a></td><td class="table-location">Loomis, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">48%</td><td class="table-profit">$1.5M</td><td class="table-capital">$779K</td><td class="table-arrow"><a href="sudor-lane/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="napa-stanly-ranch/"><div class="table-project-name"><div class="table-logo">NS</div>Napa Stanly Ranch</div></a></td><td class="table-location">Napa, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">47%</td><td class="table-profit">$2.3M</td><td class="table-capital">$1.3M</td><td class="table-arrow"><a href="napa-stanly-ranch/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="castro-260/"><div class="table-project-name"><div class="table-logo">26</div>260 Castro</div></a></td><td class="table-location">San Francisco, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">46%</td><td class="table-profit">$3.5M</td><td class="table-capital">$2.5M</td><td class="table-arrow"><a href="castro-260/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="alamo-oakshire/"><div class="table-project-name"><div class="table-logo">AO</div>Alamo Oakshire</div></a></td><td class="table-location">Alamo, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">43%</td><td class="table-profit">$1.9M</td><td class="table-capital">$1.4M</td><td class="table-arrow"><a href="alamo-oakshire/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="palisades-aderno/"><div class="table-project-name"><div class="table-logo">PA</div>Palisades Aderno</div></a></td><td class="table-location">Pacific Palisades, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">43%</td><td class="table-profit">$3.1M</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="palisades-aderno/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="granite-bay-239/"><div class="table-project-name"><div class="table-logo">GB</div>Granite Bay 239</div></a></td><td class="table-location">Granite Bay, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">36%</td><td class="table-profit">$51M</td><td class="table-capital">$16M</td><td class="table-arrow"><a href="granite-bay-239/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="river-district-8/"><div class="table-project-name"><div class="table-logo">RD</div>River District</div></a></td><td class="table-location">Sacramento, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">45%</td><td class="table-profit">$8M</td><td class="table-capital">$5M</td><td class="table-arrow"><a href="river-district-8/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="palisades-enchanted/"><div class="table-project-name"><div class="table-logo">PE</div>Palisades Enchanted</div></a></td><td class="table-location">Pacific Palisades, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">36%</td><td class="table-profit">$1.8M</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="palisades-enchanted/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="san-clemente/"><div class="table-project-name"><div class="table-logo">SC</div>San Clemente</div></a></td><td class="table-location">Capistrano Beach, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">33%</td><td class="table-profit">$1.7M</td><td class="table-capital">$1.5M</td><td class="table-arrow"><a href="san-clemente/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="moss-beach/"><div class="table-project-name"><div class="table-logo">MB</div>Moss Beach</div></a></td><td class="table-location">Moss Beach, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">33%</td><td class="table-profit">$2M</td><td class="table-capital">$1.3M</td><td class="table-arrow"><a href="moss-beach/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="palisades-chatanooga/"><div class="table-project-name"><div class="table-logo">PC</div>Palisades Chatanooga</div></a></td><td class="table-location">Pacific Palisades, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">32%</td><td class="table-profit">$900K</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="palisades-chatanooga/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="palisades-marinette/"><div class="table-project-name"><div class="table-logo">PM</div>Palisades Marinette</div></a></td><td class="table-location">Pacific Palisades, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">29%</td><td class="table-profit">$1.6M</td><td class="table-capital">$1M</td><td class="table-arrow"><a href="palisades-marinette/">→</a></td></tr>
+                    <tr data-category="available"><td><a href="delmar-ave/"><div class="table-project-name"><div class="table-logo">DM</div>Delmar Ave</div></a></td><td class="table-location">Loomis, CA</td><td><span class="table-status status-available">Available</span></td><td class="table-roi">28%</td><td class="table-profit">$4.3M</td><td class="table-capital">$1.5M</td><td class="table-arrow"><a href="delmar-ave/">→</a></td></tr>
+                    
+                    <!-- CLOSED -->
+                    <tr class="list-section-row" data-category="closed">
+                        <td colspan="7"><div class="list-section-header"><span class="section-badge badge-closed">Track Record</span><span style="color:#64748b;">$10.8M realized</span></div></td>
+                    </tr>
+                    <tr data-category="closed"><td><a href="oakland-closed/"><div class="table-project-name"><div class="table-logo closed">OC</div>Oakland Custom Lots</div></a></td><td class="table-location">Oakland, CA</td><td><span class="table-status status-closed">Closed ✓</span></td><td class="table-roi closed">87%</td><td class="table-profit" style="color:#10b981;">$4.1M</td><td class="table-capital">-</td><td class="table-arrow"><a href="oakland-closed/">→</a></td></tr>
+                    <tr data-category="closed"><td><a href="orinda-closed/"><div class="table-project-name"><div class="table-logo closed">OR</div>Orinda Custom</div></a></td><td class="table-location">Orinda, CA</td><td><span class="table-status status-closed">Closed ✓</span></td><td class="table-roi closed">87%</td><td class="table-profit" style="color:#10b981;">$2.6M</td><td class="table-capital">-</td><td class="table-arrow"><a href="orinda-closed/">→</a></td></tr>
+                    <tr data-category="closed"><td><a href="napa-542-westgate/"><div class="table-project-name"><div class="table-logo closed">NW</div>Napa 542 Westgate</div></a></td><td class="table-location">Napa, CA</td><td><span class="table-status status-closed">Closed ✓</span></td><td class="table-roi closed">57%</td><td class="table-profit" style="color:#10b981;">$1.6M</td><td class="table-capital">-</td><td class="table-arrow"><a href="napa-542-westgate/">→</a></td></tr>
+                    <tr data-category="closed"><td><a href="sf-dual-customs/"><div class="table-project-name"><div class="table-logo closed">SF</div>SF Dual Customs</div></a></td><td class="table-location">San Francisco, CA</td><td><span class="table-status status-closed">Closed ✓</span></td><td class="table-roi closed">55%</td><td class="table-profit" style="color:#10b981;">$2.5M</td><td class="table-capital">-</td><td class="table-arrow"><a href="sf-dual-customs/">→</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer style="text-align: center; padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem;">
+            <p style="color: #64748b; margin-bottom: 1rem;">For accredited investors only. Past performance not indicative of future results.</p>
+            <p style="color: #475569;">© 2026 Bianchi Group</p>
+        </footer>
+    </div>
+
+    <script>
+        // View Toggle
+        const viewBtns = document.querySelectorAll('.view-btn');
+        const gridView = document.querySelector('.grid-view');
+        const listView = document.querySelector('.list-view');
+
+        viewBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                viewBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                if (btn.dataset.view === 'list') {
+                    gridView.classList.add('hidden');
+                    listView.classList.add('active');
+                } else {
+                    gridView.classList.remove('hidden');
+                    listView.classList.remove('active');
+                }
+            });
+        });
+
+        // Category Filter
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const sections = document.querySelectorAll('.section[data-section]');
+        const tableRows = document.querySelectorAll('.projects-table tbody tr');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                
+                // Filter Grid View
+                sections.forEach(section => {
+                    if (category === 'all' || section.dataset.section === category) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                
+                // Filter List View
+                tableRows.forEach(row => {
+                    if (category === 'all' || row.dataset.category === category) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
