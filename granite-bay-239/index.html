@@ -8,13 +8,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../styles-v2.css">
+    <link rel="stylesheet" href="../styles-v2.css">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../config.js"></script>
+    <script src="../auth.js"></script>
 </head>
 <body>
     <script>
-        if (sessionStorage.getItem("bianchi-auth") !== "true") {
-            window.location.href = "/projects/";
-        }
+        // Check authentication on page load
+        (async function() {
+            const isAuthenticated = await checkAuth();
+            if (!isAuthenticated) {
+                window.location.href = "../";
+            }
+        })();
     </script>
     <nav class="nav" id="navbar"><div class="nav-container"><a href="#" class="nav-brand"><div class="nav-logo">GB</div><span class="nav-title">Granite Bay 239</span></a><div class="nav-actions"><span class="nav-badge"><i class="fas fa-trophy"></i> $51M Profit</span><a href="#contact" class="btn btn-primary btn-sm">Schedule Call</a></div></div></nav>
     <section class="hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">

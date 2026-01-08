@@ -15,13 +15,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="../../styles-v2.css">
+    <link rel="stylesheet" href="../styles-v2.css">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../config.js"></script>
+    <script src="../auth.js"></script>
 </head>
 <body>
     <script>
-        if (sessionStorage.getItem("bianchi-auth") !== "true") {
-            window.location.href = "/projects/";
-        }
+        // Check authentication on page load
+        (async function() {
+            const isAuthenticated = await checkAuth();
+            if (!isAuthenticated) {
+                window.location.href = "../";
+            }
+        })();
     </script>
     <!-- Navigation -->
     <nav class="nav" id="navbar">
