@@ -37,13 +37,15 @@
         }
     </style>
 </head>
-<body>
+<body style="display: none;">
     <script>
         // Check authentication on page load
         (async function() {
             const isAuthenticated = await checkAuth();
             if (!isAuthenticated) {
                 window.location.href = "../index.html";
+            } else {
+                document.body.style.display = '';
             }
         })();
     </script>
