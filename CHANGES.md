@@ -38,6 +38,14 @@
   - Added mobile CTA and responsive styles
   - **Result**: All 43 subproject pages now display with proper styling matching the portfolio design system
 
+### 5. Content Visibility Protection (Security Enhancement)
+- **Issue**: Content could be briefly visible or downloaded before JavaScript redirect executes, allowing unauthorized access to sensitive data
+- **Solution**: Hide all content by default until authentication check completes
+  - Added `style="display: none;"` to `<body>` tag in all protected pages
+  - Updated auth check scripts to show content only after successful authentication
+  - Applied to `portfolio.html` and all 43 subproject pages
+  - **Result**: Prevents content flash and casual viewing/downloading during page load, though HTML source is still accessible (static file limitation)
+
 ### Files Created
 - `styles-v2.css` - External stylesheet
 - `auth.js` - Authentication utility functions
@@ -48,9 +56,9 @@
 
 ### Files Modified
 - `index.html` - Replaced inline CSS and password gate with Supabase auth, then separated to login-only page
-- `portfolio.html` - Contains all project data, protected by authentication check
+- `portfolio.html` - Contains all project data, protected by authentication check, content hidden until authenticated
 - `styles-v2.css` - Added comprehensive CSS for all subproject page components (navigation, hero, cards, buttons, sections, footer, mobile)
-- All 43 subproject `index.html` files - Fixed CSS paths, replaced sessionStorage with Supabase auth, updated redirects to `../index.html`
+- All 43 subproject `index.html` files - Fixed CSS paths, replaced sessionStorage with Supabase auth, updated redirects to `../index.html`, content hidden until authenticated
 
 ## Current Security Status
 
@@ -60,12 +68,19 @@
 - Signups are disabled in Supabase (only manual account creation)
 - Session persists across page navigation
 
-### ✅ Security Improvement (Latest Update)
+### ✅ Security Improvements
+
 **Login page separation** - `index.html` now contains only the login form:
 - No project data visible in `index.html` page source
 - All sensitive data moved to `portfolio.html` (protected by auth)
 - Unauthenticated users cannot see project data in page source
 - Authenticated users are redirected to `portfolio.html` after login
+
+**Content visibility protection** - Protected pages hide content until authenticated:
+- Content hidden by default with `display: none` on body tag
+- Content only shown after successful authentication check
+- Prevents brief content flash and casual viewing during page load
+- **Note**: HTML source is still accessible (static file limitation). For stronger protection, consider server-side middleware or dynamic data loading.
 
 ## Previous Consideration: Data Protection (Option 2)
 
