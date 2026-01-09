@@ -28,6 +28,16 @@
   - Updated all 43 subproject redirects from `../` to `../index.html` (login page)
   - **Result**: Unauthenticated users viewing `index.html` source see only login form, no project data
 
+### 4. Subproject Page CSS Styling
+- **Issue**: Subproject pages were missing CSS styles for navigation, hero sections, buttons, cards, and other page elements
+- **Solution**: Added comprehensive CSS for all subproject page components to `styles-v2.css`
+  - Added navigation bar styles (`.nav`, `.nav-container`, `.nav-brand`, etc.)
+  - Added hero section styles (`.hero`, `.hero-content`, `.hero-title`, etc.)
+  - Added pitch cards, strategy cards, and button styles
+  - Added section variants, returns section, CTA cards, and footer styles
+  - Added mobile CTA and responsive styles
+  - **Result**: All 43 subproject pages now display with proper styling matching the portfolio design system
+
 ### Files Created
 - `styles-v2.css` - External stylesheet
 - `auth.js` - Authentication utility functions
@@ -39,6 +49,7 @@
 ### Files Modified
 - `index.html` - Replaced inline CSS and password gate with Supabase auth, then separated to login-only page
 - `portfolio.html` - Contains all project data, protected by authentication check
+- `styles-v2.css` - Added comprehensive CSS for all subproject page components (navigation, hero, cards, buttons, sections, footer, mobile)
 - All 43 subproject `index.html` files - Fixed CSS paths, replaced sessionStorage with Supabase auth, updated redirects to `../index.html`
 
 ## Current Security Status
