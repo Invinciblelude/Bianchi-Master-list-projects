@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Boulder Road - 85% ROI | 15 Custom Lots | Granite Bay | $3.5M Equity | Bianchi Group">
+    <title>Boulder Road | 85% ROI - Granite Bay Custom Lots</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles-v2.css">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../config.js"></script>
+    <script src="../auth.js"></script>
+</head>
+<body style="display: none;">
+    <script>
+        // Check authentication on page load
+        (async function() {
+            const isAuthenticated = await checkAuth();
+            if (!isAuthenticated) {
+                window.location.href = "../index.html";
+            } else {
+                document.body.style.display = '';
+            }
+        })();
+    </script>
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <div class="nav-logo">BR</div>
+                <span class="nav-title">Boulder Road</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#returns">Returns</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <span class="nav-badge"><i class="fas fa-star"></i> 85% ROI</span>
+                <a href="#contact" class="btn btn-primary btn-sm">Schedule Call</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fas fa-gem"></i> Entitled Custom Lots | Tentative Map Approved</span>
+                
+                <h1 class="hero-title">
+                    <span class="title-small">Placer County, California</span>
+                    <span class="title-main">Boulder Road</span>
+                    <span class="title-accent">15 Custom Estate Lots</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Rare entitled subdivision in Granite Bay — California's most exclusive suburb. Tentative Map approved. 15 estate-sized custom lots ready for development.
+                </p>
+                
+                <div class="pitch-cards">
+                    <div class="pitch-card">
+                        <div class="pitch-icon"><i class="fas fa-file-contract"></i></div>
+                        <div class="pitch-content">
+                            <span class="pitch-label">Entitlement Status</span>
+                            <span class="pitch-value">Tentative Map ✓</span>
+                        </div>
+                    </div>
+                    <div class="pitch-card">
+                        <div class="pitch-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="pitch-content">
+                            <span class="pitch-label">Total Project Cost</span>
+                            <span class="pitch-value">$6.85M</span>
+                        </div>
+                    </div>
+                    <div class="pitch-card">
+                        <div class="pitch-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="pitch-content">
+                            <span class="pitch-label">Projected Exit</span>
+                            <span class="pitch-value">$12.7M</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="strategy-preview">
+                    <h3>Investment Strategy</h3>
+                    <div class="strategy-cards">
+                        <div class="strategy-card featured" data-strategy="lots">
+                            <span class="strategy-badge">Highest ROI</span>
+                            <div class="strategy-header">
+                                <span class="strategy-label">Lot Sales</span>
+                                <h4>Finish & Sell to Builders</h4>
+                            </div>
+                            <div class="strategy-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">$3.5M</span>
+                                    <span class="metric-label">Equity</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">2.67x</span>
+                                    <span class="metric-label">Multiple</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">85%</span>
+                                    <span class="metric-label">ROI</span>
+                                </div>
+                            </div>
+                            <p class="strategy-desc">Complete infrastructure, sell finished lots to custom home builders</p>
+                            <span class="strategy-timeline"><i class="far fa-clock"></i> 18-24 month hold</span>
+                        </div>
+                        
+                        <div class="strategy-card" data-strategy="vertical">
+                            <div class="strategy-header">
+                                <span class="strategy-label">Alternative</span>
+                                <h4>Builder JV</h4>
+                            </div>
+                            <div class="strategy-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">$15M+</span>
+                                    <span class="metric-label">Equity</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">2.5x+</span>
+                                    <span class="metric-label">Multiple</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">100%+</span>
+                                    <span class="metric-label">ROI</span>
+                                </div>
+                            </div>
+                            <p class="strategy-desc">Partner with luxury builder for $3M-$5M homes</p>
+                            <span class="strategy-timeline"><i class="far fa-clock"></i> 36-48 months</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="investment-min">
+                    <span class="min-label">Equity Required</span>
+                    <span class="min-value">$3,500,000</span>
+                    <span class="min-note">Like Vista Lake Estates</span>
+                </div>
+                
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn btn-primary btn-lg"><i class="fas fa-calendar"></i> Schedule Investor Call</a>
+                    <a href="#details" class="btn btn-outline btn-lg"><i class="fas fa-info-circle"></i> View Details</a>
+                </div>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">85%</span>
+                    <span class="stat-label">Projected ROI</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$5.9M</span>
+                    <span class="stat-label">Profit Potential</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Custom Lots</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">97%</span>
+                    <span class="stat-label">GB Built Out</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span>Scroll to explore</span><i class="fas fa-chevron-down"></i></div>
+    </section>
+
+    <section class="sss-section" id="overview">
+        <div class="sss-overlay"></div>
+        <div class="container">
+            <div class="sss-hero">
+                <span class="sss-label">The Investment Thesis</span>
+                <h2 class="sss-headline">Granite Bay: California's<br><span style="color: var(--gold-400);">Most Exclusive Suburb</span></h2>
+                <p class="sss-subhead">97% built out. No new Tentative Maps approved in 5+ years. Boulder Road is one of the last opportunities to develop in Granite Bay.</p>
+            </div>
+            
+            <div class="sss-stats">
+                <div class="sss-stat highlight"><span class="sss-stat-value">85%</span><span class="sss-stat-label">Projected ROI</span></div>
+                <div class="sss-stat"><span class="sss-stat-value">15</span><span class="sss-stat-label">Estate Lots</span></div>
+                <div class="sss-stat"><span class="sss-stat-value">97%</span><span class="sss-stat-label">Built Out</span></div>
+                <div class="sss-stat"><span class="sss-stat-value">$12.7M</span><span class="sss-stat-label">Exit Value</span></div>
+            </div>
+            
+            <div class="sss-scale">
+                <h3 class="sss-section-title">Why Boulder Road?</h3>
+                <div class="scale-tiers">
+                    <div class="scale-tier featured">
+                        <span class="tier-badge">Entitled</span>
+                        <div class="tier-header">
+                            <span class="tier-amount"><i class="fas fa-file-contract"></i></span>
+                            <span class="tier-label">Tentative Map Approved</span>
+                        </div>
+                        <div class="tier-content">
+                            <ul>
+                                <li><strong>Bypass 3-5 year</strong> entitlement process</li>
+                                <li><strong>$500K+ in soft costs</strong> already spent</li>
+                                <li><strong>Engineering complete</strong> — ready to build</li>
+                                <li><strong>CEQA cleared</strong> — no environmental risk</li>
+                            </ul>
+                            <div class="tier-outcome"><span>$1M+ entitlement value embedded</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="scale-tier">
+                        <div class="tier-header">
+                            <span class="tier-amount"><i class="fas fa-gem"></i></span>
+                            <span class="tier-label">Granite Bay Scarcity</span>
+                        </div>
+                        <div class="tier-content">
+                            <ul>
+                                <li><strong>97% built out</strong> — almost no land left</li>
+                                <li><strong>$3M-$5M homes</strong> surrounding the site</li>
+                                <li><strong>Top schools</strong> — Granite Bay High</li>
+                                <li><strong>Horse country</strong> — equestrian buyers</li>
+                            </ul>
+                            <div class="tier-outcome"><span>Similar to Vista Lake Estates</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sss-invitation">
+                <div class="invitation-border"></div>
+                <div class="invitation-content">
+                    <span class="invitation-label">Rare Opportunity</span>
+                    <p class="invitation-text">Own one of the <strong>last entitled subdivisions</strong> in Granite Bay. <strong>$3.5M equity</strong> for 15 custom lots in California's most exclusive suburb.</p>
+                    <a href="#contact" class="btn btn-gold btn-lg"><i class="fas fa-phone"></i> Request Details</a>
+                </div>
+                <div class="invitation-border"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="returns">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Returns Analysis</span>
+                <h2>Investment Returns</h2>
+            </div>
+            <div class="returns-hero">
+                <div class="return-card featured"><span class="return-label">Total Return</span><span class="return-value">85%</span></div>
+                <div class="return-card"><span class="return-label">Equity Multiple</span><span class="return-value">2.67x</span></div>
+                <div class="return-card"><span class="return-label">Hold Period</span><span class="return-value">18-24</span></div>
+                <div class="return-card"><span class="return-label">Profit</span><span class="return-value">$5.9M</span></div>
+            </div>
+            
+            <div class="vertical-advantage">
+                <h4><i class="fas fa-star"></i> Why This Deal Stands Out</h4>
+                <div class="advantage-grid">
+                    <div class="advantage-item"><span class="adv-number">85%</span><span class="adv-label">ROI (3rd highest)</span></div>
+                    <div class="advantage-item"><span class="adv-number">Entitled</span><span class="adv-label">Map Approved</span></div>
+                    <div class="advantage-item"><span class="adv-number">$847K</span><span class="adv-label">Profit/Lot</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Next Steps</span>
+                <h2>Ready to Invest?</h2>
+            </div>
+            <div class="cta-cards">
+                <div class="cta-card"><div class="cta-icon"><i class="fas fa-phone"></i></div><h4>Schedule Call</h4><p>15-minute intro</p><a href="#" class="btn btn-outline">Book Time</a></div>
+                <div class="cta-card primary"><div class="cta-icon"><i class="fas fa-handshake"></i></div><h4>Request Package</h4><p>Full investment docs</p><a href="#" class="btn btn-primary">Request</a></div>
+                <div class="cta-card"><div class="cta-icon"><i class="fas fa-envelope"></i></div><h4>Email Us</h4><p>Questions?</p><a href="mailto:invest@bianchigroup.com" class="btn btn-outline">Email</a></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main"><div class="footer-brand"><div class="footer-logo">BR</div><span>Boulder Road</span></div></div>
+            <div class="footer-disclaimer"><p>Investment Disclaimer</p><p>For accredited investors only. Past performance not indicative of future results.</p></div>
+            <div class="footer-meta"><span>© 2026 Bianchi Group</span><span>January 2026</span></div>
+        </div>
+    </footer>
+
+    <div class="mobile-cta">
+        <a href="tel:9165550100" class="mobile-btn"><i class="fas fa-phone"></i></a>
+        <a href="#contact" class="mobile-btn primary">Schedule Call</a>
+    </div>
+
+    <script src="../../script-v2.js"></script>
+</body>
+</html>

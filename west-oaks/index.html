@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="West Oaks - $80M Profit Potential | 371 Units | Rocklin | Final Map Approved | Bianchi Group">
+    <title>West Oaks | 371 Units - Rocklin's Largest Development</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles-v2.css">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../config.js"></script>
+    <script src="../auth.js"></script>
+</head>
+<body style="display: none;">
+    <script>
+        // Check authentication on page load
+        (async function() {
+            const isAuthenticated = await checkAuth();
+            if (!isAuthenticated) {
+                window.location.href = "../index.html";
+            } else {
+                document.body.style.display = '';
+            }
+        })();
+    </script>
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <div class="nav-logo">WO</div>
+                <span class="nav-title">West Oaks</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#returns">Returns</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <span class="nav-badge"><i class="fas fa-trophy"></i> $80M Profit</span>
+                <a href="#contact" class="btn btn-primary btn-sm">Schedule Call</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fas fa-city"></i> Master-Planned Community | Final Map Approved</span>
+                
+                <h1 class="hero-title">
+                    <span class="title-small">Placer County, California</span>
+                    <span class="title-main">West Oaks</span>
+                    <span class="title-accent">371 Unit Development</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Rocklin's largest entitled development opportunity. Final Map approved. 371 units ready for construction. Institutional-scale with $80M profit potential.
+                </p>
+                
+                <div class="pitch-cards">
+                    <div class="pitch-card">
+                        <div class="pitch-icon"><i class="fas fa-file-contract"></i></div>
+                        <div class="pitch-content">
+                            <span class="pitch-label">Entitlement Status</span>
+                            <span class="pitch-value">Final Map ✓</span>
+                        </div>
+                    </div>
+                    <div class="pitch-card">
+                        <div class="pitch-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="pitch-content">
+                            <span class="pitch-label">Total Project Cost</span>
+                            <span class="pitch-value">$120M</span>
+                        </div>
+                    </div>
+                    <div class="pitch-card">
+                        <div class="pitch-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="pitch-content">
+                            <span class="pitch-label">Projected Exit</span>
+                            <span class="pitch-value">$200M</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="strategy-preview">
+                    <h3>Investment Strategy</h3>
+                    <div class="strategy-cards">
+                        <div class="strategy-card featured" data-strategy="phased">
+                            <span class="strategy-badge">Largest Profit</span>
+                            <div class="strategy-header">
+                                <span class="strategy-label">Phased Development</span>
+                                <h4>Build & Sell in Phases</h4>
+                            </div>
+                            <div class="strategy-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">$23M</span>
+                                    <span class="metric-label">Equity</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">1.67x</span>
+                                    <span class="metric-label">Multiple</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">67%</span>
+                                    <span class="metric-label">ROI</span>
+                                </div>
+                            </div>
+                            <p class="strategy-desc">Develop in phases, sell completed units, recycle capital</p>
+                            <span class="strategy-timeline"><i class="far fa-clock"></i> 36-48 month hold</span>
+                        </div>
+                        
+                        <div class="strategy-card" data-strategy="bulk">
+                            <div class="strategy-header">
+                                <span class="strategy-label">Alternative</span>
+                                <h4>Bulk Sale to Builder</h4>
+                            </div>
+                            <div class="strategy-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">$23M</span>
+                                    <span class="metric-label">Equity</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">1.3x</span>
+                                    <span class="metric-label">Multiple</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">30%</span>
+                                    <span class="metric-label">ROI</span>
+                                </div>
+                            </div>
+                            <p class="strategy-desc">Sell entire entitled project to national builder</p>
+                            <span class="strategy-timeline"><i class="far fa-clock"></i> 12-18 months</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="investment-min">
+                    <span class="min-label">Equity Required</span>
+                    <span class="min-value">$23,000,000</span>
+                    <span class="min-note">Institutional Scale</span>
+                </div>
+                
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn btn-primary btn-lg"><i class="fas fa-calendar"></i> Schedule Investor Call</a>
+                    <a href="#details" class="btn btn-outline btn-lg"><i class="fas fa-info-circle"></i> View Details</a>
+                </div>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">$80M</span>
+                    <span class="stat-label">Profit Potential</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">371</span>
+                    <span class="stat-label">Total Units</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">67%</span>
+                    <span class="stat-label">Projected ROI</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Final</span>
+                    <span class="stat-label">Map Status</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span>Scroll to explore</span><i class="fas fa-chevron-down"></i></div>
+    </section>
+
+    <section class="sss-section" id="overview">
+        <div class="sss-overlay"></div>
+        <div class="container">
+            <div class="sss-hero">
+                <span class="sss-label">The Investment Thesis</span>
+                <h2 class="sss-headline">The Largest Profit Opportunity<br><span style="color: var(--gold-400);">In the Bianchi Portfolio</span></h2>
+                <p class="sss-subhead">371 entitled units with Final Map approval. $80M profit potential. Rocklin's premier master-planned community.</p>
+            </div>
+            
+            <div class="sss-stats">
+                <div class="sss-stat highlight"><span class="sss-stat-value">$80M</span><span class="sss-stat-label">Profit Potential</span></div>
+                <div class="sss-stat"><span class="sss-stat-value">371</span><span class="sss-stat-label">Units</span></div>
+                <div class="sss-stat"><span class="sss-stat-value">67%</span><span class="sss-stat-label">ROI</span></div>
+                <div class="sss-stat"><span class="sss-stat-value">$200M</span><span class="sss-stat-label">Exit Value</span></div>
+            </div>
+            
+            <div class="sss-scale">
+                <h3 class="sss-section-title">Why West Oaks?</h3>
+                <div class="scale-tiers">
+                    <div class="scale-tier featured">
+                        <span class="tier-badge">Shovel-Ready</span>
+                        <div class="tier-header">
+                            <span class="tier-amount"><i class="fas fa-hard-hat"></i></span>
+                            <span class="tier-label">Final Map Approved</span>
+                        </div>
+                        <div class="tier-content">
+                            <ul>
+                                <li><strong>Final Map = ready to build</strong></li>
+                                <li><strong>All engineering complete</strong></li>
+                                <li><strong>CEQA cleared</strong></li>
+                                <li><strong>Conditions of Approval satisfied</strong></li>
+                            </ul>
+                            <div class="tier-outcome"><span>Years of entitlement work done</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="scale-tier">
+                        <div class="tier-header">
+                            <span class="tier-amount"><i class="fas fa-chart-bar"></i></span>
+                            <span class="tier-label">Institutional Scale</span>
+                        </div>
+                        <div class="tier-content">
+                            <ul>
+                                <li><strong>371 units</strong> — largest in portfolio</li>
+                                <li><strong>$200M exit value</strong></li>
+                                <li><strong>National builder interest</strong></li>
+                                <li><strong>Rocklin = #1 Placer County growth</strong></li>
+                            </ul>
+                            <div class="tier-outcome"><span>Big enough for institutional buyers</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sss-invitation">
+                <div class="invitation-border"></div>
+                <div class="invitation-content">
+                    <span class="invitation-label">Flagship Opportunity</span>
+                    <p class="invitation-text">The largest profit potential in the Bianchi portfolio. <strong>$23M equity</strong> to control <strong>371 units</strong> with <strong>$80M profit potential</strong>.</p>
+                    <a href="#contact" class="btn btn-gold btn-lg"><i class="fas fa-phone"></i> Request Details</a>
+                </div>
+                <div class="invitation-border"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="returns">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Returns Analysis</span>
+                <h2>Investment Returns</h2>
+            </div>
+            <div class="returns-hero">
+                <div class="return-card featured"><span class="return-label">Total Profit</span><span class="return-value">$80M</span></div>
+                <div class="return-card"><span class="return-label">ROI</span><span class="return-value">67%</span></div>
+                <div class="return-card"><span class="return-label">Multiple</span><span class="return-value">1.67x</span></div>
+                <div class="return-card"><span class="return-label">Units</span><span class="return-value">371</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Next Steps</span>
+                <h2>Ready to Invest?</h2>
+            </div>
+            <div class="cta-cards">
+                <div class="cta-card"><div class="cta-icon"><i class="fas fa-phone"></i></div><h4>Schedule Call</h4><p>Institutional investor intro</p><a href="#" class="btn btn-outline">Book Time</a></div>
+                <div class="cta-card primary"><div class="cta-icon"><i class="fas fa-handshake"></i></div><h4>Request Package</h4><p>Full investment package</p><a href="#" class="btn btn-primary">Request</a></div>
+                <div class="cta-card"><div class="cta-icon"><i class="fas fa-envelope"></i></div><h4>Email Us</h4><p>Questions?</p><a href="mailto:invest@bianchigroup.com" class="btn btn-outline">Email</a></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main"><div class="footer-brand"><div class="footer-logo">WO</div><span>West Oaks</span></div></div>
+            <div class="footer-disclaimer"><p>Investment Disclaimer</p><p>For accredited investors only. Past performance not indicative of future results.</p></div>
+            <div class="footer-meta"><span>© 2026 Bianchi Group</span><span>January 2026</span></div>
+        </div>
+    </footer>
+
+    <div class="mobile-cta">
+        <a href="tel:9165550100" class="mobile-btn"><i class="fas fa-phone"></i></a>
+        <a href="#contact" class="mobile-btn primary">Schedule Call</a>
+    </div>
+
+    <script src="../../script-v2.js"></script>
+</body>
+</html>

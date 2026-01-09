@@ -1,0 +1,15 @@
+// Supabase Configuration Template
+// Copy this file to config.js and fill in your actual Supabase credentials
+// Get these values from your Supabase dashboard: Settings > API
+
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+
+// Initialize Supabase client
+// Note: supabase is the global from the CDN script (@supabase/supabase-js)
+const { createClient } = supabase;
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Make it available globally
+window.supabase = supabaseClient;
+

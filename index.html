@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bianchi Group | Private Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles-v2.css">
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+</head>
+<body>
+    <!-- Authentication Gate -->
+    <div id="password-gate">
+        <div class="gate-box">
+            <div class="gate-logo">🔐</div>
+            <h1 class="gate-title">Bianchi Group</h1>
+            <p class="gate-subtitle">Private Investment Portfolio<br>Authorized Access Only</p>
+            <form id="auth-form" onsubmit="handleSignIn(event)">
+                <input type="email" id="gate-email" class="gate-input" placeholder="Email Address" required autofocus>
+                <input type="password" id="gate-password" class="gate-input" placeholder="Password" required>
+                <button type="submit" class="gate-btn" id="signin-btn">Access Portfolio</button>
+                <p id="gate-error" class="gate-error"></p>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Authentication Script -->
+    <script>
+        // Check authentication on page load - redirect if already authenticated
+        async function initAuth() {
+            const isAuthenticated = await checkAuth();
+            if (isAuthenticated) {
+                window.location.href = 'portfolio.html';
+            }
+        }
+
+        // Handle sign in form submission
+        async function handleSignIn(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('gate-email').value;
+            const password = document.getElementById('gate-password').value;
+            const error = document.getElementById('gate-error');
+            const signinBtn = document.getElementById('signin-btn');
+            
+            // Clear previous errors
+            error.textContent = '';
+            error.classList.remove('show');
+            
+            // Disable button and show loading state
+            signinBtn.disabled = true;
+            signinBtn.textContent = 'Signing in...';
+            
+            try {
+                const result = await signIn(email, password);
+                
+                if (result.success) {
+                    // Success - redirect to portfolio
+                    window.location.href = 'portfolio.html';
+                } else {
+                    // Show error
+                    error.textContent = result.error || 'Invalid credentials. Please try again.';
+                    error.classList.add('show');
+                    document.getElementById('gate-password').value = '';
+                    document.getElementById('gate-password').focus();
+                }
+            } catch (err) {
+                error.textContent = 'An unexpected error occurred. Please try again.';
+                error.classList.add('show');
+            } finally {
+                // Re-enable button
+                signinBtn.disabled = false;
+                signinBtn.textContent = 'Access Portfolio';
+            }
+        }
+
+        // Initialize auth check on page load
+        document.addEventListener('DOMContentLoaded', initAuth);
+    </script>
+</body>
+</html>

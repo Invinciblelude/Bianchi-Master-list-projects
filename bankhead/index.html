@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bankhead | 47% ROI - Loomis 6 Custom Lots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles-v2.css">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../config.js"></script>
+    <script src="../auth.js"></script>
+</head>
+<body style="display: none;">
+    <script>
+        // Check authentication on page load
+        (async function() {
+            const isAuthenticated = await checkAuth();
+            if (!isAuthenticated) {
+                window.location.href = "../index.html";
+            } else {
+                document.body.style.display = '';
+            }
+        })();
+    </script>
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand"><div class="nav-logo">BH</div><span class="nav-title">Bankhead</span></a>
+            <div class="nav-links" id="nav-links"><a href="#overview">Overview</a><a href="#returns">Returns</a><a href="#contact">Contact</a></div>
+            <div class="nav-actions">
+                <span class="nav-badge"><i class="fas fa-gem"></i> $5.8M Profit</span>
+                <a href="#contact" class="btn btn-primary btn-sm">Schedule Call</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fas fa-key"></i> Owned | Loomis Premium</span>
+                <h1 class="hero-title">
+                    <span class="title-small">Placer County, California</span>
+                    <span class="title-main">Bankhead</span>
+                    <span class="title-accent">6 Custom Lots - Loomis</span>
+                </h1>
+                <p class="hero-subtitle">6 custom lots in Loomis' premium market. Already owned. $5.8M profit potential targeting $2.99M per lot.</p>
+                
+                <div class="pitch-cards">
+                    <div class="pitch-card"><div class="pitch-icon"><i class="fas fa-map"></i></div><div class="pitch-content"><span class="pitch-label">Lot Count</span><span class="pitch-value">6 Lots</span></div></div>
+                    <div class="pitch-card"><div class="pitch-icon"><i class="fas fa-dollar-sign"></i></div><div class="pitch-content"><span class="pitch-label">Project Cost</span><span class="pitch-value">$12.18M</span></div></div>
+                    <div class="pitch-card"><div class="pitch-icon"><i class="fas fa-chart-line"></i></div><div class="pitch-content"><span class="pitch-label">Exit Value</span><span class="pitch-value">$17.94M</span></div></div>
+                </div>
+                
+                <div class="strategy-preview">
+                    <h3>Investment Strategy</h3>
+                    <div class="strategy-cards">
+                        <div class="strategy-card featured">
+                            <span class="strategy-badge">Owned</span>
+                            <div class="strategy-header"><span class="strategy-label">Lot Sales</span><h4>Finish & Sell 6 Lots</h4></div>
+                            <div class="strategy-metrics">
+                                <div class="metric"><span class="metric-value">$2M</span><span class="metric-label">Equity</span></div>
+                                <div class="metric"><span class="metric-value">1.47x</span><span class="metric-label">Multiple</span></div>
+                                <div class="metric"><span class="metric-value">47%</span><span class="metric-label">ROI</span></div>
+                            </div>
+                            <p class="strategy-desc">Complete lots, sell to Loomis custom builders at $2.99M</p>
+                            <span class="strategy-timeline"><i class="far fa-clock"></i> 18-24 months</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="investment-min"><span class="min-label">Capital Ask</span><span class="min-value">$2,000,000</span></div>
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn btn-primary btn-lg"><i class="fas fa-calendar"></i> Schedule Call</a>
+                    <a href="#returns" class="btn btn-outline btn-lg"><i class="fas fa-chart-bar"></i> View Returns</a>
+                </div>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item"><span class="stat-number">47%</span><span class="stat-label">ROI</span></div>
+                <div class="stat-item"><span class="stat-number">$5.8M</span><span class="stat-label">Profit</span></div>
+                <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Lots</span></div>
+                <div class="stat-item"><span class="stat-number">$2.99M</span><span class="stat-label">Per Lot</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sss-section" id="overview">
+        <div class="sss-overlay"></div>
+        <div class="container">
+            <div class="sss-hero">
+                <span class="sss-label">Loomis, Placer County</span>
+                <h2 class="sss-headline">Placer County's<br><span style="color: var(--gold-400);">Most Desirable Town</span></h2>
+                <p class="sss-subhead">Loomis = small-town charm with premium pricing. Top schools, rural feel, 30 min to Sacramento. Custom lot demand exceeds supply.</p>
+            </div>
+            <div class="sss-stats">
+                <div class="sss-stat highlight"><span class="sss-stat-value">$5.8M</span><span class="sss-stat-label">Profit</span></div>
+                <div class="sss-stat"><span class="sss-stat-value">6</span><span class="sss-stat-label">Lots</span></div>
+                <div class="sss-stat"><span class="sss-stat-value">47%</span><span class="sss-stat-label">ROI</span></div>
+                <div class="sss-stat"><span class="sss-stat-value">Owned</span><span class="sss-stat-label">De-Risked</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="returns">
+        <div class="container">
+            <div class="section-header"><span class="section-badge">Returns</span><h2>Investment Returns</h2></div>
+            <div class="returns-hero">
+                <div class="return-card featured"><span class="return-label">Profit</span><span class="return-value">$5.8M</span></div>
+                <div class="return-card"><span class="return-label">ROI</span><span class="return-value">47%</span></div>
+                <div class="return-card"><span class="return-label">Multiple</span><span class="return-value">1.47x</span></div>
+                <div class="return-card"><span class="return-label">Per Lot</span><span class="return-value">$2.99M</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light" id="contact">
+        <div class="container">
+            <div class="section-header"><span class="section-badge">Next Steps</span><h2>Ready to Invest?</h2></div>
+            <div class="cta-cards">
+                <div class="cta-card"><div class="cta-icon"><i class="fas fa-phone"></i></div><h4>Schedule Call</h4><a href="#" class="btn btn-outline">Book Time</a></div>
+                <div class="cta-card primary"><div class="cta-icon"><i class="fas fa-folder"></i></div><h4>Request Package</h4><a href="#" class="btn btn-primary">Request</a></div>
+                <div class="cta-card"><div class="cta-icon"><i class="fas fa-envelope"></i></div><h4>Email Us</h4><a href="mailto:invest@bianchigroup.com" class="btn btn-outline">Email</a></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main"><div class="footer-brand"><div class="footer-logo">BH</div><span>Bankhead</span></div></div>
+            <div class="footer-disclaimer"><p>For accredited investors only.</p></div>
+            <div class="footer-meta"><span>© 2026 Bianchi Group</span></div>
+        </div>
+    </footer>
+    <script src="../../script-v2.js"></script>
+</body>
+</html>

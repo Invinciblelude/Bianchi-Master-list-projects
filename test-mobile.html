@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bianchi Group | Private Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles-v2.css">
+    <style>
+        /* Modern Fixed Navigation - Vista Lake Style */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #000;
+            font-size: 0.875rem;
+        }
+
+        .nav-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        .nav-subtitle {
+            font-size: 0.7rem;
+            color: #64748b;
+            display: block;
+        }
+
+        /* Category Quick Links */
+        .nav-categories {
+            display: flex;
+            gap: 0.25rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-cat-link {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.5rem 0.75rem;
+            background: transparent;
+            border: none;
+            border-radius: 0.5rem;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .nav-cat-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: #f8fafc;
+        }
+
+        .nav-cat-link.active {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+
+        .nav-cat-link i {
+            font-size: 0.7rem;
+        }
+
+        .nav-cat-link .count {
+            background: rgba(255,255,255,0.1);
+            padding: 0.1rem 0.4rem;
+            border-radius: 9999px;
+            font-size: 0.65rem;
+        }
+
+        .nav-cat-link.active .count {
+            background: rgba(251, 191, 36, 0.3);
+        }
+
+        /* Color indicators */
+        .nav-cat-link[data-category="escrow"] i { color: #ef4444; }
+        .nav-cat-link[data-category="construction"] i { color: #f97316; }
+        .nav-cat-link[data-category="entitled"] i { color: #eab308; }
+        .nav-cat-link[data-category="owned"] i { color: #22c55e; }
+        .nav-cat-link[data-category="available"] i { color: #3b82f6; }
+        .nav-cat-link[data-category="closed"] i { color: #10b981; }
+
+        /* Stats Badge */
+        .nav-stats {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .nav-badge {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            padding: 0.5rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+                padding: 0.5rem 0.75rem;
+            }
+
+            .nav-brand {
+                order: 1;
+            }
+
+            .nav-stats {
+                order: 2;
+            }
+
+            .nav-categories {
+                order: 3;
+                width: 100%;
+                justify-content: flex-start;
+                padding: 0.5rem 0 0;
+                border-top: 1px solid rgba(255,255,255,0.05);
+                margin-top: 0.5rem;
+            }
+
+            .nav-title {
+                font-size: 1rem;
+            }
+
+            .nav-subtitle {
+                display: none;
+            }
+        }
+
+        /* Hide old category nav and mobile menu */
+        .mobile-category-menu,
+        .category-nav {
+            display: none !important;
+        }
+
+        /* Adjust container for fixed nav */
+        .container {
+            padding-top: 100px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding-top: 120px;
+            }
+        }
+
+        /* Smooth scroll offset for sections */
+        .section[data-section] {
+            scroll-margin-top: 110px;
+        }
+
+        @media (max-width: 768px) {
+            .section[data-section] {
+                scroll-margin-top: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Fixed Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <div class="nav-logo">BG</div>
+                <div>
+                    <span class="nav-title">Bianchi Group</span>
+                    <span class="nav-subtitle">Private Portfolio</span>
+                </div>
+            </a>
+
+            <div class="nav-categories">
+                <a href="#escrow" class="nav-cat-link" data-category="escrow">
+                    <i class="fas fa-fire"></i>
+                    <span>Escrow</span>
+                    <span class="count">8</span>
+                </a>
+                <a href="#construction" class="nav-cat-link" data-category="construction">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Building</span>
+                    <span class="count">5</span>
+                </a>
+                <a href="#entitled" class="nav-cat-link" data-category="entitled">
+                    <i class="fas fa-file-contract"></i>
+                    <span>Entitled</span>
+                    <span class="count">3</span>
+                </a>
+                <a href="#owned" class="nav-cat-link" data-category="owned">
+                    <i class="fas fa-key"></i>
+                    <span>Owned</span>
+                    <span class="count">3</span>
+                </a>
+                <a href="#available" class="nav-cat-link" data-category="available">
+                    <i class="fas fa-search"></i>
+                    <span>Pipeline</span>
+                    <span class="count">20</span>
+                </a>
+                <a href="#closed" class="nav-cat-link" data-category="closed">
+                    <i class="fas fa-trophy"></i>
+                    <span>Closed</span>
+                    <span class="count">4</span>
+                </a>
+            </div>
+
+            <div class="nav-stats">
+                <span class="nav-badge">
+                    <i class="fas fa-chart-line"></i>
+                    55% Avg ROI
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Bianchi Group Portfolio</h1>
+            <p style="font-size: 1.1rem;">47 Projects | $360.5M Profit Potential | 55% Average ROI</p>
+            
+            <div class="stats-bar">
+                <div class="stat"><div class="stat-value">47</div><div class="stat-label">Total Projects</div></div>
+                <div class="stat"><div class="stat-value">$360.5M</div><div class="stat-label">Profit Potential</div></div>
+                <div class="stat"><div class="stat-value">55%</div><div class="stat-label">Avg ROI</div></div>
+                <div class="stat"><div class="stat-value">$118.6M</div><div class="stat-label">Capital Required</div></div>
+            </div>
+        </header>
+
+        <!-- IN ESCROW -->
+        <div class="section" data-section="escrow" id="escrow">
+            <div class="section-header">
+                <span class="section-badge badge-escrow"><i class="fas fa-fire"></i> In Escrow</span>
+                <h2 class="section-title">Closing Soon</h2>
+                <span class="section-count">8 projects • $65.1M profit</span>
+            </div>
+            <div class="projects-grid">
+                <a href="tracy-self-storage/" class="project-card">
+                    <div class="card-header"><div class="card-logo">TS</div><div class="card-roi">101% ROI</div></div>
+                    <h3 class="card-title">Tracy Self Storage</h3>
+                    <p class="card-location">Tracy, CA</p>
+                    <div class="card-stats"><div><div class="card-stat-value">$22.6M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$7M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                    <div class="card-arrow">View Details →</div>
+                </a>
+                <a href="calvine-rd-storage/" class="project-card">
+                    <div class="card-header"><div class="card-logo">CR</div><div class="card-roi">96% ROI</div></div>
+                    <h3 class="card-title">Calvine Rd Storage</h3>
+                    <p class="card-location">Sacramento, CA</p>
+                    <div class="card-stats"><div><div class="card-stat-value">$22.9M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$7M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                    <div class="card-arrow">View Details →</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- UNDER CONSTRUCTION -->
+        <div class="section" data-section="construction" id="construction">
+            <div class="section-header">
+                <span class="section-badge badge-construction"><i class="fas fa-hard-hat"></i> Under Construction</span>
+                <h2 class="section-title">Active Projects</h2>
+                <span class="section-count">5 projects • $19.1M profit</span>
+            </div>
+            <div class="projects-grid">
+                <a href="cambridge/" class="project-card">
+                    <div class="card-header"><div class="card-logo">CB</div><div class="card-roi">57% ROI</div></div>
+                    <h3 class="card-title">Cambridge</h3>
+                    <p class="card-location">Cameron Park, CA</p>
+                    <div class="card-stats"><div><div class="card-stat-value">$3.2M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">12 Units</div><div class="card-stat-label">Townhomes</div></div></div>
+                    <div class="card-arrow">View Details →</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ENTITLED -->
+        <div class="section" data-section="entitled" id="entitled">
+            <div class="section-header">
+                <span class="section-badge badge-entitled"><i class="fas fa-file-contract"></i> Entitled</span>
+                <h2 class="section-title">Ready to Execute</h2>
+                <span class="section-count">3 projects • $155.9M profit</span>
+            </div>
+            <div class="projects-grid">
+                <a href="tahoe-zalanta/" class="project-card">
+                    <div class="card-header"><div class="card-logo">TZ</div><div class="card-roi">100% ROI</div></div>
+                    <h3 class="card-title">Tahoe Zalanta</h3>
+                    <p class="card-location">South Lake Tahoe, CA</p>
+                    <div class="card-stats"><div><div class="card-stat-value">$70M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$17.5M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                    <div class="card-arrow">View Details →</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- OWNED -->
+        <div class="section" data-section="owned" id="owned">
+            <div class="section-header">
+                <span class="section-badge badge-owned"><i class="fas fa-key"></i> Owned</span>
+                <h2 class="section-title">Land Banked</h2>
+                <span class="section-count">3 projects • $23.9M profit</span>
+            </div>
+            <div class="projects-grid">
+                <a href="thermalands/" class="project-card">
+                    <div class="card-header"><div class="card-logo">TL</div><div class="card-roi">82% ROI</div></div>
+                    <h3 class="card-title">Thermalands</h3>
+                    <p class="card-location">Lincoln, CA</p>
+                    <div class="card-stats"><div><div class="card-stat-value">$3.1M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                    <div class="card-arrow">View Details →</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- AVAILABLE -->
+        <div class="section" data-section="available" id="available">
+            <div class="section-header">
+                <span class="section-badge badge-available"><i class="fas fa-search"></i> Available</span>
+                <h2 class="section-title">Active Pipeline</h2>
+                <span class="section-count">20 projects • $96.5M+ profit</span>
+            </div>
+            <div class="projects-grid">
+                <a href="sf-edgehill/" class="project-card">
+                    <div class="card-header"><div class="card-logo">SE</div><div class="card-roi">77% ROI</div></div>
+                    <h3 class="card-title">SF Edgehill</h3>
+                    <p class="card-location">San Francisco, CA</p>
+                    <div class="card-stats"><div><div class="card-stat-value">$2.8M</div><div class="card-stat-label">Profit</div></div><div><div class="card-stat-value">$1.3M</div><div class="card-stat-label">Capital Ask</div></div></div>
+                    <div class="card-arrow">View Details →</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- TRACK RECORD -->
+        <div class="section" data-section="closed" id="closed">
+            <div class="section-header">
+                <span class="section-badge badge-closed"><i class="fas fa-trophy"></i> Track Record</span>
+                <h2 class="section-title">Closed Deals</h2>
+                <span class="section-count">$10.8M realized profits</span>
+            </div>
+            <div class="projects-grid">
+                <a href="oakland-closed/" class="project-card">
+                    <div class="card-header"><div class="card-logo" style="background: #10b981;">OC</div><div class="card-roi closed">87% ROI ✓</div></div>
+                    <h3 class="card-title">Oakland Custom Lots</h3>
+                    <p class="card-location">Oakland, CA</p>
+                    <div class="card-stats"><div><div class="card-stat-value" style="color: #10b981;">$4.1M</div><div class="card-stat-label">Profit Delivered</div></div></div>
+                    <div class="card-arrow" style="color: #10b981;">View Case Study →</div>
+                </a>
+            </div>
+        </div>
+
+        <footer style="text-align: center; padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem;">
+            <p style="color: #64748b; margin-bottom: 1rem;">For accredited investors only. Past performance not indicative of future results.</p>
+            <p style="color: #475569;">© 2026 Bianchi Group</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('.nav-cat-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Highlight active category on scroll
+        const sections = document.querySelectorAll('.section[data-section]');
+        const navLinks = document.querySelectorAll('.nav-cat-link');
+
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('data-section');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-category') === current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
+    </script>
+</body>
+</html>

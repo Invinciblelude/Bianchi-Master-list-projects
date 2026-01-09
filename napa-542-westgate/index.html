@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Napa 542 Westgate | 57% ROI - CLOSED Track Record</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles-v2.css">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../config.js"></script>
+    <script src="../auth.js"></script>
+</head>
+<body style="display: none;">
+    <script>
+        // Check authentication on page load
+        (async function() {
+            const isAuthenticated = await checkAuth();
+            if (!isAuthenticated) {
+                window.location.href = "../index.html";
+            } else {
+                document.body.style.display = '';
+            }
+        })();
+    </script>
+    <nav class="nav" id="navbar"><div class="nav-container"><a href="#" class="nav-brand"><div class="nav-logo">NW</div><span class="nav-title">Napa 542</span></a><div class="nav-actions"><span class="nav-badge" style="background: #10B981;"><i class="fas fa-check"></i> CLOSED</span></div></div></nav>
+    <section class="hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">
+        <span class="hero-badge" style="background: #10B981;"><i class="fas fa-trophy"></i> Track Record | 57% ROI Realized</span>
+        <h1 class="hero-title"><span class="title-small">Napa County, California</span><span class="title-main">542 Westgate Drive</span><span class="title-accent">Successfully Completed</span></h1>
+        <p class="hero-subtitle">Successfully completed Napa wine country custom. 57% ROI realized. $1.6M profit delivered. Sister project to 540 Westgate (in escrow).</p>
+        <div class="pitch-cards"><div class="pitch-card"><div class="pitch-icon"><i class="fas fa-check-circle" style="color: #10B981;"></i></div><div class="pitch-content"><span class="pitch-label">Status</span><span class="pitch-value">CLOSED ✓</span></div></div><div class="pitch-card"><div class="pitch-icon"><i class="fas fa-chart-line" style="color: #10B981;"></i></div><div class="pitch-content"><span class="pitch-label">ROI Delivered</span><span class="pitch-value">57%</span></div></div><div class="pitch-card"><div class="pitch-icon"><i class="fas fa-dollar-sign" style="color: #10B981;"></i></div><div class="pitch-content"><span class="pitch-label">Profit Realized</span><span class="pitch-value">$1.6M</span></div></div></div>
+        <div class="investment-min" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);"><span class="min-label">Investment Result</span><span class="min-value">57% ROI</span><span class="min-note">Successfully Closed</span></div>
+        <div class="hero-ctas"><a href="../napa-540-westgate/" class="btn btn-primary btn-lg"><i class="fas fa-arrow-right"></i> View 540 Westgate (Active)</a></div>
+    </div><div class="hero-stats"><div class="stat-item"><span class="stat-number" style="color: #10B981;">57%</span><span class="stat-label">ROI Realized</span></div><div class="stat-item"><span class="stat-number" style="color: #10B981;">$1.6M</span><span class="stat-label">Profit Delivered</span></div></div></div></section>
+    <section class="sss-section" id="overview"><div class="sss-overlay"></div><div class="container">
+        <div class="sss-hero">
+            <span class="sss-label" style="color: #10B981;">Track Record</span>
+            <h2 class="sss-headline">Napa Wine Country<br><span style="color: #10B981;">Track Record</span></h2>
+            <p class="sss-subhead">We've done Westgate before. 542 delivered 57% ROI. Now 540 is in escrow - same street, same strategy, same team.</p>
+        </div>
+        <div class="sss-stats">
+            <div class="sss-stat" style="border-color: #10B981;"><span class="sss-stat-value" style="color: #10B981;">57%</span><span class="sss-stat-label">Final ROI</span></div>
+            <div class="sss-stat"><span class="sss-stat-value">$1.6M</span><span class="sss-stat-label">Profit</span></div>
+            <div class="sss-stat"><span class="sss-stat-value">✓</span><span class="sss-stat-label">Completed</span></div>
+        </div>
+    </div></section>
+    <footer class="footer"><div class="container"><div class="footer-disclaimer"><p>Past performance demonstrated. View 540 Westgate for current Napa opportunity.</p></div><div class="footer-meta"><span>© 2026 Bianchi Group</span></div></div></footer>
+    <script src="../../script-v2.js"></script>
+</body>
+</html>
