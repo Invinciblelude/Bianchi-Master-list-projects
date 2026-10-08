@@ -8,26 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../styles-v2.css">
+    <link rel="stylesheet" href="../styles-v2.css?v=3">
     
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../config.js"></script>
-    <script src="../auth.js"></script>
 </head>
-<body style="display: none;">
-    <script>
-        // Check authentication on page load
-        (async function() {
-            const isAuthenticated = await checkAuth();
-            if (!isAuthenticated) {
-                window.location.href = "../index.html";
-            } else {
-                document.body.style.display = '';
-            }
-        })();
-    </script>
-    <nav class="nav" id="navbar"><div class="nav-container"><a href="#" class="nav-brand"><div class="nav-logo">SM</div><span class="nav-title">Schaffer's Mill</span></a><div class="nav-actions"><span class="nav-badge"><i class="fas fa-skiing"></i> 53% ROI</span><a href="#contact" class="btn btn-primary btn-sm">Schedule Call</a></div></div></nav>
+<body>
+<nav class="nav" id="navbar"><div class="nav-container"><a href="#" class="nav-brand"><div class="nav-logo">SM</div><span class="nav-title">Schaffer's Mill</span></a><div class="nav-actions"><span class="nav-badge"><i class="fas fa-skiing"></i> 53% ROI</span><a href="#contact" class="btn btn-primary btn-sm">Schedule Call</a></div></div></nav>
     <section class="hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">
         <span class="hero-badge"><i class="fas fa-mountain"></i> Available | Truckee</span>
         <h1 class="hero-title"><span class="title-small">Nevada County, California</span><span class="title-main">Schaffer's Mill</span><span class="title-accent">Truckee Golf Community</span></h1>
@@ -39,6 +24,23 @@
     </div><div class="hero-stats"><div class="stat-item"><span class="stat-number">53%</span><span class="stat-label">ROI</span></div><div class="stat-item"><span class="stat-number">$1.8M</span><span class="stat-label">Profit</span></div></div></div></section>
     <section class="section section-dark" id="returns"><div class="container"><div class="section-header"><span class="section-badge">Returns</span><h2>Investment Returns</h2></div><div class="returns-hero"><div class="return-card featured"><span class="return-label">ROI</span><span class="return-value">53%</span></div><div class="return-card"><span class="return-label">Multiple</span><span class="return-value">1.53x</span></div><div class="return-card"><span class="return-label">Profit</span><span class="return-value">$1.8M</span></div></div></div></section>
     <section class="section section-light" id="contact"><div class="container"><div class="section-header"><span class="section-badge">Next Steps</span><h2>Ready to Invest?</h2></div><div class="cta-cards"><div class="cta-card primary"><div class="cta-icon"><i class="fas fa-folder"></i></div><h4>Request Package</h4><a href="mailto:invest@bianchigroup.com" class="btn btn-primary">Request</a></div></div></div></section>
+
+    
+    <section class="section section-light" id="source-display">
+        <div class="container">
+            <div class="section-header"><span class="section-badge">Project file</span><h2>Address, site, and pro forma</h2></div>
+            <div class="source-address">
+                <span class="source-kicker">Prospective address</span>
+                <h3>9300 Nine Bark, Truckee, CA</h3>
+                <p>Available · 1 Custom Lot</p>
+            </div>
+            <img class="source-hero" src="media/FRONT-LIGHTENED.jpg" alt="Project site">
+            <div class="source-gallery"><img src="media/FRONT-LIGHTENED.jpg" alt="Project display"><img src="media/20240645-e458a4f7-a401-4ebd-99dc-52d0434b0c3f-1.jpg" alt="Project display"><img src="media/20240645-e458a4f7-a401-4ebd-99dc-52d0434b0c3f.jpg" alt="Project display"><img src="media/20240645-fe45c587-0897-475e-a4c9-292d2f72c168.jpg" alt="Project display"><img src="media/20240645-1ae0b088-463f-44f2-91a1-e93c2642ed45.jpg" alt="Project display"><img src="media/20240645-e16bce77-9f20-49f3-b598-290171701c27.jpg" alt="Project display"><img src="media/20240645-388e9b5c-677a-4677-872b-50150b6c016e.jpg" alt="Project display"><img src="media/20240645-ab2d1f90-e39f-43ba-9108-a37787caba2f.jpg" alt="Project display"></div>
+            
+            <p class="source-note">Pro forma file on record: 201014-MICKLEBURGH-SM348-PLAN SHEETS-REV 1.pdf, 201014-MICKLEBURGH-SM348-PLAN SHEETS-REV 1 (1).pdf, 201014-MICKLEBURGH-SM348-PLAN SHEETS-REV 1 (1).docx, 201014-MICKLEBURGH-SM348-PLAN SHEETS-REV 1.pdf. Totals are not extracted on this page.</p>
+        </div>
+    </section>
+
     <footer class="footer"><div class="container"><div class="footer-disclaimer"><p>For accredited investors only.</p></div><div class="footer-meta"><span>© 2026 Bianchi Group</span></div></div></footer>
     <script src="../../script-v2.js"></script>
 </body>

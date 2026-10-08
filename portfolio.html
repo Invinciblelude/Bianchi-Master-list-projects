@@ -8,26 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles-v2.css">
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="config.js"></script>
-    <script src="auth.js"></script>
+    <link rel="stylesheet" href="styles-v2.css?v=3">
 </head>
-<body style="display: none;">
-    <script>
-        // Check authentication on page load
-        (async function() {
-            const isAuthenticated = await checkAuth();
-            if (!isAuthenticated) {
-                window.location.href = "index.html";
-            } else {
-                document.body.style.display = '';
-            }
-        })();
-    </script>
-    
-    <div class="container">
+<body>
+<div class="container">
         <header>
             <h1>Bianchi Group Portfolio</h1>
             <p style="font-size: 1.1rem;">47 Projects | $360.5M Profit Potential | 55% Average ROI</p>
@@ -81,7 +65,8 @@
         
         <!-- Controls Bar -->
         <div class="controls-bar">
-            <a href="../" class="main-site-link"><i class="fas fa-star"></i> Vista Lake Estates - Flagship</a>
+            <a href="boulder-road/" class="main-site-link"><i class="fas fa-star"></i> Vista Lake Estates - Flagship</a>
+            <a href="process.html" class="main-site-link"><i class="fas fa-list-check"></i> Project SOP</a>
             <div class="view-controls">
                 <button class="view-btn active" data-view="grid"><i class="fas fa-th-large"></i> Cards</button>
                 <button class="view-btn" data-view="list"><i class="fas fa-list"></i> List</button>
@@ -117,6 +102,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="calvine-rd-storage/" class="project-card">
+                        <img class="card-photo" src="calvine-rd-storage/media/Site-view.jpg" alt="">
                         <div class="card-header"><div class="card-logo">CR</div><div class="card-roi">96% ROI</div></div>
                         <h3 class="card-title">Calvine Rd Storage</h3>
                         <p class="card-location">Sacramento, CA</p>
@@ -124,6 +110,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="edh-lomand/" class="project-card">
+                        <img class="card-photo" src="edh-lomand/media/Front-elevation.jpg" alt="">
                         <div class="card-header"><div class="card-logo">EL</div><div class="card-roi">63% ROI</div></div>
                         <h3 class="card-title">EDH Lomand</h3>
                         <p class="card-location">El Dorado Hills, CA</p>
@@ -131,6 +118,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="south-point-meadows/" class="project-card">
+                        <img class="card-photo" src="south-point-meadows/media/Map-1-9.jpg" alt="">
                         <div class="card-header"><div class="card-logo">SP</div><div class="card-roi">59% ROI</div></div>
                         <h3 class="card-title">South Point Meadows</h3>
                         <p class="card-location">El Dorado Hills, CA</p>
@@ -138,6 +126,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="napa-540-westgate/" class="project-card">
+                        <img class="card-photo" src="napa-540-westgate/media/Cover-sheet.jpg" alt="">
                         <div class="card-header"><div class="card-logo">NW</div><div class="card-roi">49% ROI</div></div>
                         <h3 class="card-title">Napa 540 Westgate</h3>
                         <p class="card-location">Napa, CA</p>
@@ -159,6 +148,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="sf-states-st/" class="project-card">
+                        <img class="card-photo" src="sf-states-st/media/Exterior-rendering-materials.jpg" alt="">
                         <div class="card-header"><div class="card-logo">SF</div><div class="card-roi">32% ROI</div></div>
                         <h3 class="card-title">SF States Street</h3>
                         <p class="card-location">San Francisco, CA</p>
@@ -177,6 +167,7 @@
                 </div>
                 <div class="projects-grid">
                     <a href="cambridge/" class="project-card">
+                        <img class="card-photo" src="cambridge/media/Cambridge-Rendering_hr.jpg" alt="">
                         <div class="card-header"><div class="card-logo">CB</div><div class="card-roi">57% ROI</div></div>
                         <h3 class="card-title">Cambridge</h3>
                         <p class="card-location">Cameron Park, CA</p>
@@ -184,6 +175,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="brentwood/" class="project-card">
+                        <img class="card-photo" src="brentwood/media/BrentWood5_Exterior_ColorDraft.jpg" alt="">
                         <div class="card-header"><div class="card-logo">BW</div><div class="card-roi">52% ROI</div></div>
                         <h3 class="card-title">Brentwood</h3>
                         <p class="card-location">Brentwood, CA</p>
@@ -191,6 +183,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="baldwin-lake/" class="project-card">
+                        <img class="card-photo" src="baldwin-lake/media/Baldwin-Dam-Road---Home-Rendering-2.jpg" alt="">
                         <div class="card-header"><div class="card-logo">BL</div><div class="card-roi">51% ROI</div></div>
                         <h3 class="card-title">Baldwin Lake</h3>
                         <p class="card-location">Folsom, CA</p>
@@ -198,6 +191,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="brady-lane/" class="project-card">
+                        <img class="card-photo" src="brady-lane/media/BRADY-PLAN-3---RENDER-44.jpg" alt="">
                         <div class="card-header"><div class="card-logo">BL</div><div class="card-roi">42% ROI</div></div>
                         <h3 class="card-title">Brady Lane</h3>
                         <p class="card-location">Roseville, CA</p>
@@ -205,6 +199,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="brookwood/" class="project-card">
+                        <img class="card-photo" src="brookwood/media/BRADY-PLAN-3---RENDER-44.jpg" alt="">
                         <div class="card-header"><div class="card-logo">BK</div><div class="card-roi">34% ROI</div></div>
                         <h3 class="card-title">Brookwood</h3>
                         <p class="card-location">Roseville, CA</p>
@@ -223,6 +218,7 @@
                 </div>
                 <div class="projects-grid">
                     <a href="boulder-road/" class="project-card">
+                        <img class="card-photo" src="boulder-road/media/aerial-boundary.jpg" alt="">
                         <div class="card-header"><div class="card-logo">BR</div><div class="card-roi">85% ROI</div></div>
                         <h3 class="card-title">Boulder Road</h3>
                         <p class="card-location">Granite Bay, CA</p>
@@ -287,6 +283,7 @@
                 </div>
                 <div class="projects-grid">
                     <a href="sf-edgehill/" class="project-card">
+                        <img class="card-photo" src="sf-edgehill/media/129-Edgewater-Way-SF-94127.jpg" alt="">
                         <div class="card-header"><div class="card-logo">SE</div><div class="card-roi">77% ROI</div></div>
                         <h3 class="card-title">SF Edgehill</h3>
                         <p class="card-location">San Francisco, CA</p>
@@ -301,6 +298,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="schaffers-mill/" class="project-card">
+                        <img class="card-photo" src="schaffers-mill/media/FRONT-LIGHTENED.jpg" alt="">
                         <div class="card-header"><div class="card-logo">SM</div><div class="card-roi">53% ROI</div></div>
                         <h3 class="card-title">Schaffer's Mill</h3>
                         <p class="card-location">Truckee, CA</p>
@@ -329,6 +327,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="sudor-lane/" class="project-card">
+                        <img class="card-photo" src="sudor-lane/media/Screenshot_20230228-012128-6345.jpg" alt="">
                         <div class="card-header"><div class="card-logo">SL</div><div class="card-roi">48% ROI</div></div>
                         <h3 class="card-title">Sudor Lane</h3>
                         <p class="card-location">Loomis, CA</p>
@@ -336,6 +335,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="napa-stanly-ranch/" class="project-card">
+                        <img class="card-photo" src="napa-stanly-ranch/media/Screenshot-2026-01-09-at-4.30.26-AM.jpg" alt="">
                         <div class="card-header"><div class="card-logo">NS</div><div class="card-roi">47% ROI</div></div>
                         <h3 class="card-title">Napa Stanly Ranch</h3>
                         <p class="card-location">Napa, CA</p>
@@ -350,6 +350,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="alamo-oakshire/" class="project-card">
+                        <img class="card-photo" src="alamo-oakshire/media/Front-rendering.jpg" alt="">
                         <div class="card-header"><div class="card-logo">AO</div><div class="card-roi">43% ROI</div></div>
                         <h3 class="card-title">Alamo Oakshire</h3>
                         <p class="card-location">Alamo, CA</p>
@@ -392,6 +393,7 @@
                         <div class="card-arrow">View Details →</div>
                     </a>
                     <a href="moss-beach/" class="project-card">
+                        <img class="card-photo" src="moss-beach/media/Front-privacy-elevation.jpg" alt="">
                         <div class="card-header"><div class="card-logo">MB</div><div class="card-roi">33% ROI</div></div>
                         <h3 class="card-title">Moss Beach</h3>
                         <p class="card-location">Moss Beach, CA</p>
@@ -445,6 +447,7 @@
                         <div class="card-arrow" style="color: #10b981;">View Case Study →</div>
                     </a>
                     <a href="napa-542-westgate/" class="project-card">
+                        <img class="card-photo" src="napa-542-westgate/media/Cover-sheet.jpg" alt="">
                         <div class="card-header"><div class="card-logo" style="background: #10b981;">NW</div><div class="card-roi closed">57% ROI ✓</div></div>
                         <h3 class="card-title">Napa 542 Westgate</h3>
                         <p class="card-location">Napa, CA</p>

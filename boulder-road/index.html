@@ -10,26 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../styles-v2.css">
+    <link rel="stylesheet" href="../styles-v2.css?v=3">
     
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../config.js"></script>
-    <script src="../auth.js"></script>
 </head>
-<body style="display: none;">
-    <script>
-        // Check authentication on page load
-        (async function() {
-            const isAuthenticated = await checkAuth();
-            if (!isAuthenticated) {
-                window.location.href = "../index.html";
-            } else {
-                document.body.style.display = '';
-            }
-        })();
-    </script>
-    <nav class="nav" id="navbar">
+<body>
+<nav class="nav" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-brand">
                 <div class="nav-logo">BR</div>
@@ -275,6 +260,22 @@
                 <div class="cta-card primary"><div class="cta-icon"><i class="fas fa-handshake"></i></div><h4>Request Package</h4><p>Full investment docs</p><a href="#" class="btn btn-primary">Request</a></div>
                 <div class="cta-card"><div class="cta-icon"><i class="fas fa-envelope"></i></div><h4>Email Us</h4><p>Questions?</p><a href="mailto:invest@bianchigroup.com" class="btn btn-outline">Email</a></div>
             </div>
+        </div>
+    </section>
+
+    
+    <section class="section section-light" id="source-display">
+        <div class="container">
+            <div class="section-header"><span class="section-badge">Project file</span><h2>Address, site, and pro forma</h2></div>
+            <div class="source-address">
+                <span class="source-kicker">Prospective address</span>
+                <h3>Lake Vista Estates, Granite Bay, CA — 15 estate lots</h3>
+                <p>Tentative Map · 15 Custom Lots</p>
+            </div>
+            <img class="source-hero" src="media/aerial-boundary.jpg" alt="Project site">
+            <div class="source-gallery"><img src="media/aerial-boundary.jpg" alt="Project display"><img src="media/detailed-overlay.jpg" alt="Project display"><img src="media/future-rendering.jpg" alt="Project display"><img src="media/tentative-map.jpg" alt="Project display"></div>
+            
+            <p class="source-note">No pro forma totals are in this project folder.</p>
         </div>
     </section>
 

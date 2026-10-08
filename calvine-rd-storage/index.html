@@ -15,26 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="../styles-v2.css">
+    <link rel="stylesheet" href="../styles-v2.css?v=3">
     
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../config.js"></script>
-    <script src="../auth.js"></script>
 </head>
-<body style="display: none;">
-    <script>
-        // Check authentication on page load
-        (async function() {
-            const isAuthenticated = await checkAuth();
-            if (!isAuthenticated) {
-                window.location.href = "../index.html";
-            } else {
-                document.body.style.display = '';
-            }
-        })();
-    </script>
-    <!-- Navigation -->
+<body>
+<!-- Navigation -->
     <nav class="nav" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-brand">
@@ -401,7 +386,7 @@
                             
                             <div class="panel-sidebar">
                                 <div class="map-preview">
-                                    <img src="../../images/aerial-boundary.jpg" alt="Calvine Site Aerial" onerror="this.src='https://via.placeholder.com/400x300/1e3a5f/c9a961?text=Site+Aerial'">
+                                    <img src="media/Site-view.png" alt="Calvine Site Aerial" onerror="this.src='https://via.placeholder.com/400x300/1e3a5f/c9a961?text=Site+Aerial'">
                                     <a href="#" class="map-expand"><i class="fas fa-expand"></i> View Map</a>
                                 </div>
                             </div>
@@ -648,7 +633,7 @@
             </div>
             
             <!-- Email Gate -->
-            <div class="email-gate" id="email-gate">
+            <div class="email-gate" id="email-gate" style="display: none;">
                 <div class="gate-icon"><i class="fas fa-lock"></i></div>
                 <h3>Access Investment Documents</h3>
                 <p>Enter your email to unlock the data room.</p>
@@ -662,7 +647,7 @@
                 <p class="gate-note"><i class="fas fa-shield-alt"></i> For accredited investors only.</p>
             </div>
             
-            <div class="data-room-content" id="data-room-content" style="display: none;">
+            <div class="data-room-content" id="data-room-content">
                 <div class="room-categories">
                     <div class="room-category">
                         <div class="category-header">
@@ -720,6 +705,23 @@
     </section>
 
     <!-- Footer -->
+
+    
+    <section class="section section-light" id="source-display">
+        <div class="container">
+            <div class="section-header"><span class="section-badge">Project file</span><h2>Address, site, and pro forma</h2></div>
+            <div class="source-address">
+                <span class="source-kicker">Prospective address</span>
+                <h3>Calvine Road, Sacramento, CA</h3>
+                <p>In Escrow · Self Storage 12.9 acres</p>
+            </div>
+            <img class="source-hero" src="media/Site-view.jpg" alt="Project site">
+            <div class="source-gallery"><img src="media/Site-view.jpg" alt="Project display"></div>
+            
+            <p class="source-note">Pro forma file on record: 24-0418 - ESI - Dos Rios - CD DRAFT SET.pdf. Totals are not extracted on this page.</p>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-main">

@@ -8,26 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../styles-v2.css">
+    <link rel="stylesheet" href="../styles-v2.css?v=3">
     
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../config.js"></script>
-    <script src="../auth.js"></script>
 </head>
-<body style="display: none;">
-    <script>
-        // Check authentication on page load
-        (async function() {
-            const isAuthenticated = await checkAuth();
-            if (!isAuthenticated) {
-                window.location.href = "../index.html";
-            } else {
-                document.body.style.display = '';
-            }
-        })();
-    </script>
-    <nav class="nav" id="navbar"><div class="nav-container"><a href="#" class="nav-brand"><div class="nav-logo">SF</div><span class="nav-title">SF Dual Customs</span></a><div class="nav-actions"><span class="nav-badge" style="background: #10B981;"><i class="fas fa-check"></i> CLOSED</span></div></div></nav>
+<body>
+<nav class="nav" id="navbar"><div class="nav-container"><a href="#" class="nav-brand"><div class="nav-logo">SF</div><span class="nav-title">SF Dual Customs</span></a><div class="nav-actions"><span class="nav-badge" style="background: #10B981;"><i class="fas fa-check"></i> CLOSED</span></div></div></nav>
     <section class="hero"><div class="hero-bg"></div><div class="container"><div class="hero-content">
         <span class="hero-badge" style="background: #10B981;"><i class="fas fa-trophy"></i> Track Record | 55% ROI Realized</span>
         <h1 class="hero-title"><span class="title-small">San Francisco, California</span><span class="title-main">SF Dual Customs</span><span class="title-accent">Successfully Completed</span></h1>
@@ -48,6 +33,23 @@
             <div class="sss-stat"><span class="sss-stat-value">✓</span><span class="sss-stat-label">Completed</span></div>
         </div>
     </div></section>
+
+    
+    <section class="section section-light" id="source-display">
+        <div class="container">
+            <div class="section-header"><span class="section-badge">Project file</span><h2>Address, site, and pro forma</h2></div>
+            <div class="source-address">
+                <span class="source-kicker">Prospective address</span>
+                <h3>San Francisco, CA</h3>
+                <p>Closed/funded · 2 luxury Customs</p>
+            </div>
+            
+            <p class="source-note">No site photo is stored in this project folder.</p>
+            
+            <p class="source-note">No pro forma totals are in this project folder.</p>
+        </div>
+    </section>
+
     <footer class="footer"><div class="container"><div class="footer-disclaimer"><p>Past performance demonstrated. View SF Edgehill for current SF opportunity.</p></div><div class="footer-meta"><span>© 2026 Bianchi Group</span></div></div></footer>
     <script src="../../script-v2.js"></script>
 </body>
